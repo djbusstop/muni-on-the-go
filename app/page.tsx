@@ -1,5 +1,5 @@
 import VehicleIDForm from "@/app/_components/VehicleIdForm";
-import RandomVehicleButton from "./vehicleId/[vehicleId]/_components/RandomVehicleButton";
+import RandomVehicleButton from "./vehicle/[vehicleId]/_components/RandomVehicleButton";
 
 export default function Home() {
   return (

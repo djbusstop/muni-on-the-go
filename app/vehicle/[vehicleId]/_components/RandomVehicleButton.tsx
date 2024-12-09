@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 import fetchVehicleMonitoring from "../fetchVehicleMonitoring";
 
 export default function RandomVehicleButton() {
@@ -26,7 +26,8 @@ export default function RandomVehicleButton() {
           .at(randomNumber)?.MonitoredVehicleJourney.VehicleRef;
 
         console.log(randomVehicleID);
-        if (randomVehicleID) redirect(`/vehicleId/${randomVehicleID}`);
+        if (randomVehicleID)
+          redirect(`/vehicle/${randomVehicleID}`, RedirectType.push);
       }}
     >
       Random vehicle
