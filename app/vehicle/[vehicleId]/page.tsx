@@ -24,7 +24,7 @@ export default async function Page({
   const stops = getStops(vehicleJourney);
 
   return (
-    <main className="p-5">
+    <main>
       <h1 className="text-4xl leading-loose font-bold">
         Vehicle #{vehicleJourney.VehicleRef}
       </h1>

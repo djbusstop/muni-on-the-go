@@ -3,7 +3,7 @@ import RandomVehicleButton from "./vehicle/[vehicleId]/_components/RandomVehicle
 
 export default function Home() {
   return (
-    <main className="flex gap-4 flex-col h-[85vh] text-center p-6 items-center">
+    <main className="flex gap-4 flex-col h-[85vh] text-center items-center">
       {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
       <div>
         <span className="text-[88px] leading-none">🌁</span>
