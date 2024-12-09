@@ -3,7 +3,7 @@ import fetchVehicleMonitoring, {
   getStops,
   getVehicleJourney,
 } from "./fetchVehicleMonitoring";
-import OnwardCallList from "./_components/OnwardCallList";
+import OnwardCallList from "./components/OnwardCallList";
 
 export default async function Page({
   params,
