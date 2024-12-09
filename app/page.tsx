@@ -16,7 +16,7 @@ export default function Home() {
         </p>
       </div>
       {/* Vertically centered */}
-      <div className="flex flex-col flex-grow justify-center items-center w-full max-w-lg">
+      <div className="flex flex-col gap-4 flex-grow justify-center items-center w-full max-w-lg">
         <VehicleIDForm />
         <p className="text-secondary">
           <b>Hint: </b>The vehicle ID number is a 4 digit number found inside
