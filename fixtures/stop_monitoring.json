@@ -1,0 +1,53 @@
+{
+  "ServiceDelivery": {
+    "ResponseTimestamp": "2024-12-09T20:20:15Z",
+    "ProducerRef": "SF",
+    "Status": true,
+    "StopMonitoringDelivery": {
+      "version": "1.4",
+      "ResponseTimestamp": "2024-12-09T20:20:15Z",
+      "Status": true,
+      "MonitoredStopVisit": [
+        {
+          "RecordedAtTime": "2024-12-09T20:20:01Z",
+          "MonitoringRef": "15688",
+          "MonitoredVehicleJourney": {
+            "LineRef": "5R",
+            "DirectionRef": "OB",
+            "FramedVehicleJourneyRef": {
+              "DataFrameRef": "2024-12-09",
+              "DatedVehicleJourneyRef": "11648287_M11"
+            },
+            "PublishedLineName": "FULTON RAPID",
+            "OperatorRef": "SF",
+            "OriginRef": "17914",
+            "OriginName": "Transit Center Bay B",
+            "DestinationRef": "13927",
+            "DestinationName": "Cabrillo St & La Playa St",
+            "Monitored": true,
+            "InCongestion": null,
+            "VehicleLocation": {
+              "Longitude": "-122.397644",
+              "Latitude": "37.7908058"
+            },
+            "Bearing": "300.0000000000",
+            "Occupancy": "seatsAvailable",
+            "VehicleRef": "7240",
+            "MonitoredCall": {
+              "StopPointRef": "15688",
+              "StopPointName": "Market St & Powell St",
+              "VehicleLocationAtStop": "",
+              "VehicleAtStop": "false",
+              "DestinationDisplay": "Ocean Beach",
+              "AimedArrivalTime": "2024-12-09T20:30:00Z",
+              "ExpectedArrivalTime": "2024-12-09T20:27:32Z",
+              "AimedDepartureTime": "2024-12-09T20:30:00Z",
+              "ExpectedDepartureTime": null,
+              "Distances": ""
+            }
+          }
+        }
+      ]
+    }
+  }
+}

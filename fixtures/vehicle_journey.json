@@ -1,0 +1,66 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2024-12-09T20:18:45Z",
+      "ProducerRef": "SF",
+      "Status": true,
+      "VehicleMonitoringDelivery": {
+        "version": "1.4",
+        "ResponseTimestamp": "2024-12-09T20:18:45Z",
+        "VehicleActivity": [
+          {
+            "RecordedAtTime": "2024-12-09T20:18:44Z",
+            "ValidUntilTime": "",
+            "MonitoredVehicleJourney": {
+              "LineRef": "15",
+              "DirectionRef": "IB",
+              "FramedVehicleJourneyRef": {
+                "DataFrameRef": "2024-12-09",
+                "DatedVehicleJourneyRef": "11654247_M11"
+              },
+              "PublishedLineName": "BAYVIEW HUNTERS POINT EXPRESS",
+              "OperatorRef": "SF",
+              "OriginRef": "18055",
+              "OriginName": "Palou Ave & 3rd St",
+              "DestinationRef": "16606",
+              "DestinationName": "Sutter St & Sansome St",
+              "Monitored": true,
+              "InCongestion": null,
+              "VehicleLocation": {
+                "Longitude": "-122.396362",
+                "Latitude": "37.7817345"
+              },
+              "Bearing": "300.0000000000",
+              "Occupancy": "seatsAvailable",
+              "VehicleRef": "8622",
+              "MonitoredCall": {
+                "StopPointRef": "13136",
+                "StopPointName": "3rd St & Stevenson St",
+                "DestinationDisplay": "Sutter & Sansome",
+                "VehicleLocationAtStop": "",
+                "VehicleAtStop": "",
+                "AimedArrivalTime": "2024-12-09T20:23:12Z",
+                "ExpectedArrivalTime": "2024-12-09T20:20:12Z",
+                "AimedDepartureTime": "2024-12-09T20:23:12Z",
+                "ExpectedDepartureTime": null
+              },
+              "OnwardCalls": {
+                "OnwardCall": [
+                  {
+                    "StopPointRef": "16606",
+                    "StopPointName": "Sutter St & Sansome St",
+                    "DestinationDisplay": "Sutter & Sansome",
+                    "AimedArrivalTime": "2024-12-09T20:26:00Z",
+                    "ExpectedArrivalTime": "2024-12-09T20:23:51Z",
+                    "AimedDepartureTime": "2024-12-09T20:26:00Z",
+                    "ExpectedDepartureTime": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

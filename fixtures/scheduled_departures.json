@@ -1,0 +1,37 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2024-12-09T12:07:31-08:00",
+      "Status": true,
+      "StopTimetableDelivery": {
+        "ResponseTimestamp": "2024-12-09T12:07:31-08:00",
+        "TimetabledStopVisit": [
+          {
+            "RecordedAtTime": "2024-10-25T21:03:46-08:00",
+            "MonitoringRef": "16754",
+            "TargetedVehicleJourney": {
+              "LineRef": "45",
+              "DirectionRef": "OB",
+              "DatedVehicleJourneyRef": "11665786_M11",
+              "PublishedLineName": "45",
+              "OperatorRef": "SF",
+              "OriginRef": "18110",
+              "OriginName": "Townsend St & Lusk St",
+              "DestinationRef": "15331",
+              "DestinationName": "Lyon St & Greenwich St",
+              "VehicleJourneyName": "Lyon + Greenwich",
+              "TargetedCall": {
+                "StopPointRef": "16754",
+                "StopPointName": "Union St & Fillmore St",
+                "DestinationDisplay": "Lyon + Greenwich",
+                "VisitNumber": "1",
+                "AimedArrivalTime": "2024-12-09T12:08:31-08:00",
+                "AimedDepartureTime": "2024-12-09T12:08:31-08:00"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
