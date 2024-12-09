@@ -1,3 +1,4 @@
+import Link from "next/link";
 import RelativeTime from "./RelativeTime";
 
 const OnwardCallListItem = ({
@@ -30,7 +31,11 @@ const OnwardCallListItem = ({
       {/* Left col */}
       <div className="flex flex-col flex-grow">
         {nextStop && <span className="text-secondary">Next stop</span>}
-        <h3 className="mb-1 font-bold text-xl">{onwardCall.StopPointName}</h3>
+        <h3 className="mb-1 font-bold text-xl hover:underline">
+          <Link href={`/stop/${onwardCall.StopPointRef}`}>
+            {onwardCall.StopPointName}
+          </Link>
+        </h3>
         <p>
           Arriving{" "}
           <RelativeTime
