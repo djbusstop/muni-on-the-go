@@ -1,20 +1,12 @@
-import OnwardCallListItem from './OnwardCallListItem'
+import OnwardCallListItem from "./OnwardCallListItem";
 
 const OnwardCallList = ({
   onwardCalls,
 }: {
-  onwardCalls: Array<OnwardCall>
+  onwardCalls: Array<OnwardCall>;
 }) => {
   return (
-    <ul
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        padding: 0,
-        listStyle: 'none',
-        gap: '1em',
-      }}
-    >
+    <ul className="flex flex-col list-none gap-4">
       {onwardCalls.map((onwardCall, index) => {
         return (
           <OnwardCallListItem
@@ -22,10 +14,10 @@ const OnwardCallList = ({
             onwardCall={onwardCall}
             nextStop={index === 0}
           />
-        )
+        );
       })}
     </ul>
-  )
-}
+  );
+};
 
-export default OnwardCallList
+export default OnwardCallList;

@@ -16,13 +16,8 @@ const OnwardCallListItem = ({
 
   return (
     <li
-      className="OnwardCallListItem"
+      className="flex items-center p-4 bg-gray-100"
       style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        padding: "1em",
-        backgroundColor: "whitesmoke",
         borderTopRightRadius: "5px",
         borderTopLeftRadius: "5px",
         borderLeft: "1px solid lightgrey",
@@ -32,22 +27,10 @@ const OnwardCallListItem = ({
       }}
     >
       {/* Left col */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flexGrow: 1,
-        }}
-      >
-        {nextStop && (
-          <span style={{ color: "gray", marginBottom: "0.1em" }}>
-            Next stop
-          </span>
-        )}
-        <h3 style={{ margin: 0, marginBottom: "0.5em" }}>
-          {onwardCall.StopPointName}
-        </h3>
-        <p style={{ margin: 0 }}>
+      <div className="flex flex-col flex-grow">
+        {nextStop && <span className="text-gray-500">Next stop</span>}
+        <h3 className="mb-1 font-bold text-xl">{onwardCall.StopPointName}</h3>
+        <p>
           Arriving{" "}
           <RelativeTime
             scheduled={scheduledArrivalTime}
