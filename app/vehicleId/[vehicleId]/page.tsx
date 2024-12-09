@@ -29,7 +29,7 @@ export default async function Page({
         Vehicle #{vehicleJourney.VehicleRef}
       </h1>
       {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <h3 className="text-2xl font-bold">
+        <h3 className="text-xl font-bold">
           {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName} to{" "}
           {vehicleJourney.DestinationName}
         </h3>

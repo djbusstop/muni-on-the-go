@@ -2,11 +2,7 @@
 const VehicleIDForm = () => {
   return (
     <form
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1em",
-      }}
+      className="flex flex-col gap-4"
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -19,16 +15,14 @@ const VehicleIDForm = () => {
     >
       <input
         name="vehicleID"
-        style={{
-          fontSize: "xx-large",
-        }}
+        className="text-2xl"
         type="number"
         inputMode="numeric"
         pattern="[0-9]*"
         aria-label="Current bus or train number"
         placeholder="Vehicle #"
       />
-      <button type="submit" style={{ fontSize: "x-large" }}>
+      <button type="submit" className="text-xl">
         Go
       </button>
     </form>

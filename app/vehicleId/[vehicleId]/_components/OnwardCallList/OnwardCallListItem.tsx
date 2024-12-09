@@ -16,8 +16,9 @@ const OnwardCallListItem = ({
 
   return (
     <li
-      className="flex items-center p-4 bg-gray-100"
+      className="flex items-center p-4"
       style={{
+        backgroundColor: "whitesmoke",
         borderTopRightRadius: "5px",
         borderTopLeftRadius: "5px",
         borderLeft: "1px solid lightgrey",
@@ -28,7 +29,7 @@ const OnwardCallListItem = ({
     >
       {/* Left col */}
       <div className="flex flex-col flex-grow">
-        {nextStop && <span className="text-gray-500">Next stop</span>}
+        {nextStop && <span className="text-secondary">Next stop</span>}
         <h3 className="mb-1 font-bold text-xl">{onwardCall.StopPointName}</h3>
         <p>
           Arriving{" "}
