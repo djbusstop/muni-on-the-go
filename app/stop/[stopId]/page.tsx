@@ -50,9 +50,15 @@ export default async function Page({
 
           return (
             <li key={index}>
-              <Link href={`/vehicle/${stopVisit.VehicleRef}`}>
-                {stopVisit.LineRef} {stopVisit.DirectionRef} {timeDifference}
-              </Link>
+              {stopVisit.VehicleRef ? (
+                <Link href={`/vehicle/${stopVisit.VehicleRef}`}>
+                  {stopVisit.LineRef} {stopVisit.DirectionRef} {timeDifference}
+                </Link>
+              ) : (
+                <span>
+                  {stopVisit.LineRef} {stopVisit.DirectionRef} {timeDifference}
+                </span>
+              )}
             </li>
           );
         })}
