@@ -1,5 +1,5 @@
 // API Docs: https://511.org/sites/default/files/2022-11/511%20SF%20Bay%20Open%20Data%20Specification%20-%20Transit.pdf
-const VEHICLE_MONITORING_ENDPOINT = `https://api.511.org/transit/VehicleMonitoring?api_key=${process.env.REACT_APP_511_API_TOKEN}&agency=SF`;
+const VEHICLE_MONITORING_ENDPOINT = `https://api.511.org/transit/VehicleMonitoring?api_key=${process.env.NEXT_PUBLIC_TRANSIT_511_API_TOKEN}&agency=SF`;
 
 const fetchVehicleMonitoring = async (
   vehicleID?: number

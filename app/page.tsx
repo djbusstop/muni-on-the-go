@@ -1,8 +1,10 @@
 import VehicleIDForm from "@/app/_components/VehicleIdForm";
+import RandomVehicleButton from "./vehicleId/[vehicleId]/_components/RandomVehicleButton";
 
 export default function Home() {
   return (
     <main className="flex flex-col h-[85vh] text-center p-6 items-center">
+      {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
       <div>
         <span className="text-[88px] leading-none">🌁</span>
         <h1 className="text-4xl leading-tight font-extrabold mt-2">
