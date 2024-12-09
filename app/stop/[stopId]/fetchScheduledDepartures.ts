@@ -4,7 +4,7 @@ const SCHEDULED_DEPARTURES_ENDPOINT = `https://api.511.org/transit/stoptimetable
 const fetchScheduledDepartures = async (
   stopId: string | number,
   arrivalTime?: string
-): Promise<unknown> => {
+): Promise<ScheduledDeparturesResponse> => {
   // Sets time to 5 min before and 15 min after arrival time, or the next 20 min
   let time;
   if (arrivalTime) {

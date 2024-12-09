@@ -4,7 +4,6 @@ const STOP_MONITORING_ENDPOINT = `https://api.511.org/transit/StopMonitoring?api
 const fetchStopMonitoring = async (
   stopCode?: string | number
 ): Promise<LiveStopMonitoringResponse> => {
-  console.log(STOP_MONITORING_ENDPOINT + `&stopCode=${stopCode}`);
   const response = await fetch(
     stopCode
       ? STOP_MONITORING_ENDPOINT + `&stopCode=${stopCode}`

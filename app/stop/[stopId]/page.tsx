@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import fetchStopMonitoring from "./fetchStopMonitoring";
+import fetchScheduledDepartures from "./fetchScheduledDepartures";
 
 export default async function Page({
   params,
@@ -12,7 +12,7 @@ export default async function Page({
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
 
-  const stopMonitoringResponse = await fetchStopMonitoring(stopId);
+  const stopMonitoringResponse = await fetchScheduledDepartures(stopId);
 
   console.log(stopMonitoringResponse);
 
