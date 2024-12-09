@@ -10,6 +10,8 @@ const fetchVehicleMonitoring = async (
       : VEHICLE_MONITORING_ENDPOINT
   );
 
+  if (!response.ok) throw new Error(await response.json());
+
   const json = await response.json();
   return json;
 };
