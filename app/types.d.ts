@@ -39,7 +39,7 @@ interface TargetedVehicleJourney extends BaseVehicleJourney {
   TargetedCall: TargetedCall;
 }
 
-interface MonitoredVehicleJourney extends TargetedVehicleJourney {
+interface MonitoredVehicleJourney extends BaseVehicleJourney {
   FramedVehicleJourneyRef: {
     DataFrameRef: string; // '2024-07-29'
     DatedVehicleJourneyRef: string; // '11618992_M31'
@@ -57,12 +57,6 @@ interface MonitoredVehicleJourney extends TargetedVehicleJourney {
   OnwardCalls?: {
     OnwardCall: Array<OnwardCall>;
   };
-}
-
-interface VehicleActivity {
-  RecordedAtTime: string; // '2024-07-29T18:15:56Z'
-  ValidUntilTime: string; // '' | '2024-07-29T18:15:56Z'
-  MonitoredVehicleJourney: MonitoredVehicleJourney;
 }
 
 // Responses
@@ -93,7 +87,11 @@ interface LiveVehicleMonitoringResponse {
       VehicleMonitoringDelivery: {
         version: string; // 1.4
         ResponseTimestamp: string; // '2024-07-29T18:15:56Z'
-        VehicleActivity: Array<VehicleActivity>;
+        VehicleActivity: Array<{
+          RecordedAtTime: string; // '2024-07-29T18:15:56Z'
+          ValidUntilTime: string; // '' | '2024-07-29T18:15:56Z'
+          MonitoredVehicleJourney: MonitoredVehicleJourney;
+        }>;
       };
     };
   };
@@ -107,7 +105,7 @@ interface LiveStopMonitoringResponse {
     StopMonitoringDelivery: {
       ResponseTimestamp: string;
       Status: true;
-      version: "1.4";
+      version: string; // "1.4";
       MonitoredStopVisit: Array<{
         RecordedAtTime: "2024-12-07T12:58:48Z";
         MonitoringRef: "14229";

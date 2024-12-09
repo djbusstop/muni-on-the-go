@@ -20,7 +20,7 @@ const fetchVehicleMonitoring = async (
 
 export const getVehicleJourney = (
   vehicleMonitoringResponse: LiveVehicleMonitoringResponse
-): VehicleActivity["MonitoredVehicleJourney"] | undefined => {
+): MonitoredVehicleJourney | undefined => {
   const vehicleJourney =
     vehicleMonitoringResponse.Siri?.ServiceDelivery?.VehicleMonitoringDelivery?.VehicleActivity?.at(
       0
@@ -30,7 +30,7 @@ export const getVehicleJourney = (
 };
 
 export const getStops = (
-  vehicleJourney: VehicleActivity["MonitoredVehicleJourney"]
+  vehicleJourney: MonitoredVehicleJourney
 ): Array<OnwardCall | MonitoredCall> => {
   let stops: Array<OnwardCall | MonitoredCall> = [];
 

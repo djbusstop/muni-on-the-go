@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import fetchStopMonitoring from "./fetchStopMonitoring";
+import Link from "next/link";
 
 dayjs.extend(relativeTime);
 
@@ -24,21 +25,23 @@ export default async function Page({
 
   if (!currentStop) notFound();
 
+  console.log(stopVisits);
+
   return (
     <main>
-      {/* <h1 className="text-4xl leading-loose font-bold">
+      <h1 className="text-4xl leading-loose font-bold">
         Stop #{currentStop?.StopPointRef}
       </h1>
       {currentStop?.StopPointName && (
         <h3 className="text-xl font-bold">{currentStop.StopPointName}</h3>
-      )} */}
+      )}
 
       <h2>Departures</h2>
-      {/* <ul>
+      <ul>
         {stopVisits.map((stopVisit, index) => {
           const arrivalTime = dayjs(
-            stopVisit.TargetedCall.ExpectedArrivalTime ||
-              stopVisit.TargetedCall.AimedArrivalTime
+            stopVisit.MonitoredCall?.ExpectedArrivalTime ||
+              stopVisit.MonitoredCall?.AimedArrivalTime
           );
 
           const timeDifference = arrivalTime.fromNow();
@@ -47,13 +50,13 @@ export default async function Page({
 
           return (
             <li key={index}>
-              <Link href={`/vehicle`}>
+              <Link href={`/vehicle/${stopVisit.VehicleRef}`}>
                 {stopVisit.LineRef} {stopVisit.DirectionRef} {timeDifference}
               </Link>
             </li>
           );
         })}
-      </ul> */}
+      </ul>
     </main>
   );
 }
