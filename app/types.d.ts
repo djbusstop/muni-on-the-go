@@ -74,13 +74,11 @@ interface ScheduledDeparturesResponse {
       Status: boolean;
       StopTimetableDelivery: {
         ResponseTimestamp: string; // "2024-12-09T12:07:31-08:00";
-        TimetabledStopVisit: [
-          {
-            RecordedAtTime: string; // "2024-10-25T21:03:46-08:00";
-            MonitoringRef: string; // "16754";
-            TargetedVehicleJourney: TargetedVehicleJourney;
-          }
-        ];
+        TimetabledStopVisit: Array<{
+          RecordedAtTime: string; // "2024-10-25T21:03:46-08:00";
+          MonitoringRef: string; // "16754";
+          TargetedVehicleJourney: TargetedVehicleJourney;
+        }>;
       };
     };
   };

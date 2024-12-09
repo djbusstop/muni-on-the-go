@@ -29,4 +29,15 @@ const fetchScheduledDepartures = async (
   const json = await response.json();
   return json;
 };
+
+export const getStopVisits = (
+  scheduledDeparturesResponse: ScheduledDeparturesResponse
+) => {
+  const stopVisits =
+    scheduledDeparturesResponse.Siri.ServiceDelivery.StopTimetableDelivery.TimetabledStopVisit.map(
+      (stopVisit) => stopVisit.TargetedVehicleJourney
+    );
+
+  return stopVisits;
+};
 export default fetchScheduledDepartures;
