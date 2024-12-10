@@ -10,12 +10,12 @@ const VehicleIdForm = () => {
   return (
     <form
       ref={formRef}
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-2"
       onSubmit={(event) => event.preventDefault()}
     >
       <input
         name="itemId"
-        className="text-2xl appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="text-2xl appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
         type="number"
         inputMode="numeric"
         pattern="[0-9]*"

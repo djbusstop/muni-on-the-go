@@ -16,13 +16,8 @@ export default function Home() {
         </p>
       </div>
       {/* Vertically centered */}
-      <div className="flex flex-col gap-4 flex-grow justify-center items-center w-full max-w-lg">
+      <div className="flex flex-col flex-grow justify-center items-center w-full max-w-lg">
         <SearchForm />
-        <p className="text-secondary">
-          <b>Hint: </b>The vehicle ID number is a 4 digit number found inside
-          and outside of the bus or train. It&apos;s usually prominently visible
-          at the back, near the door, or near the driver&apos;s cab.
-        </p>
       </div>
     </main>
   );
