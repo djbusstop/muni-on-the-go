@@ -25,22 +25,6 @@ const VehicleIdForm = () => {
       />
       <button
         type="submit"
-        value="stop"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-xl"
-        disabled={inputValue?.length === 0}
-        onClick={(event) => {
-          event.preventDefault();
-          formRef.current?.reportValidity();
-          if (inputValue && typeof inputValue === "string") {
-            const stopId = parseInt(inputValue);
-            redirect(`/stop/${stopId}`, RedirectType.push);
-          }
-        }}
-      >
-        Stop
-      </button>
-      <button
-        type="submit"
         value="vehicle"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-xl"
         onClick={(event) => {
@@ -53,6 +37,21 @@ const VehicleIdForm = () => {
         }}
       >
         Vehicle
+      </button>
+      <button
+        type="submit"
+        value="stop"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-xl"
+        onClick={(event) => {
+          event.preventDefault();
+          formRef.current?.reportValidity();
+          if (inputValue && typeof inputValue === "string") {
+            const stopId = parseInt(inputValue);
+            redirect(`/stop/${stopId}`, RedirectType.push);
+          }
+        }}
+      >
+        Stop
       </button>
     </form>
   );

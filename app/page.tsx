@@ -3,9 +3,9 @@ import RandomVehicleButton from "./vehicle/[vehicleId]/components/RandomVehicleB
 
 export default function Home() {
   return (
-    <main className="flex gap-4 flex-col h-[85vh] text-center items-center">
-      {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
-      <div>
+    <main className="flex justify-center text-center w-full">
+      <div className="flex flex-col max-w-lg">
+        {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
         <span className="text-[88px] leading-none">🌁</span>
         <h1 className="text-4xl leading-tight font-extrabold mt-2">
           MUNI On the Go
@@ -14,10 +14,9 @@ export default function Home() {
           See the live schedule of the SF MUNI bus or train you&apos;re
           currently riding.
         </p>
-      </div>
-      {/* Vertically centered */}
-      <div className="flex flex-col flex-grow justify-center items-center w-full max-w-lg">
-        <SearchForm />
+        <div className="mt-5">
+          <SearchForm />
+        </div>
       </div>
     </main>
   );
