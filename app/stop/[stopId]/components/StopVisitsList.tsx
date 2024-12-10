@@ -17,7 +17,7 @@ const StopVisitsList = ({
         return (
           <li
             key={index}
-            className="flex items-center p-4 gap-4"
+            className="flex items-center gap-4 p-4"
             style={{
               backgroundColor: "whitesmoke",
               borderTopRightRadius: "5px",
@@ -28,14 +28,17 @@ const StopVisitsList = ({
               borderBottom: "5px solid #cd3545",
             }}
           >
-            <h3 className="text-2xl font-bold flex-grow">
-              {stopVisit.LineRef}{" "}
-            </h3>
-            <div>
+            <div className="flex flex-col flex-grow">
+              <h3 className="text-2xl font-bold flex-grow">
+                {stopVisit.LineRef}{" "}
+              </h3>
+              <span>to {stopVisit.DestinationName}</span>
+            </div>
+            <div className="text-xl shrink-0">
               {stopVisit.VehicleRef ? (
                 <Link
                   href={`/vehicle/${stopVisit.VehicleRef}`}
-                  className="hover:underline"
+                  className="hover:underline "
                 >
                   {timeDifference}
                 </Link>
