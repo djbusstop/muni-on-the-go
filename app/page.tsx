@@ -11,8 +11,8 @@ export default function Home() {
           MUNI On the Go
         </h1>
         <p>
-          See the live schedule of the SF MUNI bus or train you&apos;re
-          currently riding.
+          The SF transit app for locals who already know where they&apos;re
+          going.
         </p>
         <div className="mt-5">
           <SearchForm />
