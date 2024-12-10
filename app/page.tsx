@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex flex-col max-w-lg">
         {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
         <span className="text-[88px] leading-none">🌁</span>
-        <h1 className="text-4xl leading-tight font-extrabold mt-2">
+        <h1 className="text-3xl leading-tight font-extrabold mt-2 mb-1">
           MUNI On the Go
         </h1>
         <p>
