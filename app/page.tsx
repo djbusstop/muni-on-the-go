@@ -1,4 +1,4 @@
-import VehicleIDForm from "@/app/_components/VehicleIdForm";
+import SearchForm from "@/app/_components/SearchForm";
 import RandomVehicleButton from "./vehicle/[vehicleId]/components/RandomVehicleButton";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       </div>
       {/* Vertically centered */}
       <div className="flex flex-col gap-4 flex-grow justify-center items-center w-full max-w-lg">
-        <VehicleIDForm />
+        <SearchForm />
         <p className="text-secondary">
           <b>Hint: </b>The vehicle ID number is a 4 digit number found inside
           and outside of the bus or train. It&apos;s usually prominently visible
