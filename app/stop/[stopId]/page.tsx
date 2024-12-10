@@ -25,8 +25,6 @@ export default async function Page({
 
   if (!currentStop) notFound();
 
-  console.log(stopVisits);
-
   return (
     <main>
       <h1 className="text-4xl leading-loose font-bold">

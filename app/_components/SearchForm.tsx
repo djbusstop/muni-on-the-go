@@ -33,7 +33,6 @@ const VehicleIdForm = () => {
           formRef.current?.reportValidity();
           if (inputValue && typeof inputValue === "string") {
             const stopId = parseInt(inputValue);
-            console.log(stopId);
             redirect(`/stop/${stopId}`, RedirectType.push);
           }
         }}
@@ -49,7 +48,6 @@ const VehicleIdForm = () => {
           formRef.current?.reportValidity();
           if (inputValue && typeof inputValue === "string") {
             const vehicleId = parseInt(inputValue);
-            console.log(vehicleId);
             redirect(`/vehicle/${vehicleId}`, RedirectType.push);
           }
         }}
