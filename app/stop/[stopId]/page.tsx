@@ -1,10 +1,7 @@
 import { notFound } from "next/navigation";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
-
-dayjs.extend(relativeTime);
+import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 
 export default async function Page({
   params,
@@ -21,18 +18,26 @@ export default async function Page({
     stopMonitoringResponse.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit.map(
       (stopVisit) => stopVisit.MonitoredVehicleJourney
     );
-  const currentStop = stopVisits.at(0)?.MonitoredCall;
+  const currentStop = stopVisits.at(0);
+  const currentStopCall = currentStop?.MonitoredCall;
 
-  if (!currentStop) notFound();
+  if (!currentStop || !currentStopCall) notFound();
 
   return (
     <main>
-      <h1 className="text-4xl leading-loose font-bold">
-        Stop #{currentStop?.StopPointRef}
-      </h1>
-      {currentStop?.StopPointName && (
-        <h3 className="text-xl font-bold">{currentStop.StopPointName}</h3>
-      )}
+      <header className="flex items-center">
+        <div className="flex-grow">
+          <h1 className="text-4xl leading-loose font-bold">
+            Stop #{currentStopCall?.StopPointRef}
+          </h1>
+          {currentStopCall?.StopPointName && (
+            <h3 className="text-xl font-bold">
+              {currentStopCall.StopPointName}
+            </h3>
+          )}
+        </div>
+        <FavoriteStopButton currentStop={currentStop} />
+      </header>
 
       <div className="mt-6">
         <StopVisitsList stopVisits={stopVisits} />
