@@ -45,7 +45,7 @@ const FavoriteStopButton = ({
   };
 
   return (
-    <span
+    <button
       aria-label="Save stop as favorite"
       className="text-4xl"
       onClick={() => {
@@ -55,7 +55,7 @@ const FavoriteStopButton = ({
     >
       {/* Red if in favorites, white if not */}
       {isCurrentStopInFavorites ? <>❤️</> : <>🤍</>}
-    </span>
+    </button>
   );
 };
 export default FavoriteStopButton;
