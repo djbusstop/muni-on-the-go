@@ -1,5 +1,8 @@
 import dayjs from "dayjs";
 import Link from "next/link";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 const StopVisitsList = ({
   stopVisits,
