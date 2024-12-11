@@ -25,7 +25,7 @@ export default async function Page({
 
   return (
     <main>
-      <h1 className="text-4xl leading-loose font-bold">
+      <h1 className="text-3xl leading-loose font-bold">
         Vehicle #{vehicleJourney.VehicleRef}
       </h1>
       {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (

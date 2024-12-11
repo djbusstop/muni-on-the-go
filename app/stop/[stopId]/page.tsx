@@ -27,7 +27,7 @@ export default async function Page({
     <main>
       <header className="flex items-center">
         <div className="flex-grow">
-          <h1 className="text-4xl leading-loose font-bold">
+          <h1 className="text-3xl leading-loose font-bold">
             Stop #{currentStopCall?.StopPointRef}
           </h1>
           {currentStopCall?.StopPointName && (
