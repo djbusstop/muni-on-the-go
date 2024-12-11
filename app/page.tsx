@@ -4,7 +4,7 @@ import FavoriteStopsList from "./favorites/FavoriteStopsList";
 
 export default function Home() {
   return (
-    <main className="flex justify-center w-full">
+    <main className="flex justify-center w-full -mt-3">
       <div className="flex flex-col max-w-lg">
         {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
         <span className="text-[88px] leading-none text-center">🌁</span>
