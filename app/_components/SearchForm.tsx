@@ -20,7 +20,7 @@ const VehicleIdForm = () => {
         inputMode="numeric"
         pattern="[0-9]*"
         aria-label="Current bus or train number"
-        placeholder="Stop # or Vehicle #"
+        placeholder="Vehicle or Stop #"
         onChange={(event) => setInputValue(event.target.value)}
       />
       <button
