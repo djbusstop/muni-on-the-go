@@ -8,10 +8,13 @@ const FavoriteStopsList = () => {
     FAVORITES_LOCAL_STORAGE_KEY,
     []
   );
+
+  if (favorites.length === 0) return null;
+
   return (
     <>
       <h2 className="text-2xl font-bold">❤️ Favorites</h2>
-      <ul className="mt-2">
+      <ul className="mt-2 leading-loose">
         {favorites.map((favoriteStop) => {
           return (
             <li key={favoriteStop.StopPointRef}>
