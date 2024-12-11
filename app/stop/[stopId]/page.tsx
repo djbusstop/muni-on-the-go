@@ -25,7 +25,7 @@ export default async function Page({
 
   return (
     <main>
-      <header className="flex items-center">
+      <header className="flex items-center gap-2">
         <div className="flex-grow">
           <h1 className="text-3xl leading-loose font-bold">
             Stop #{currentStopCall?.StopPointRef}
