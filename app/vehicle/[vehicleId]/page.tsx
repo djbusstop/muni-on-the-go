@@ -27,26 +27,28 @@ export default async function Page({
 
   return (
     <main>
-      {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <span className="text-xs text-secondary leading-loose">
-          <Link className="hover:underline" href="/">
-            Home
-          </Link>{" "}
-          / Vehicle #{vehicleJourney.VehicleRef}
-        </span>
-      )}
-      <h1 className="text-xl font-bold">
-        {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
-      </h1>
-      <h2 className="text-md">
-        to{" "}
-        <Link
-          href={`/stop/${vehicleJourney.DestinationRef}`}
-          className="hover:underline"
-        >
-          {vehicleJourney.DestinationName}
-        </Link>
-      </h2>
+      <header>
+        {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
+          <span className="text-xs text-secondary">
+            <Link className="hover:underline" href="/">
+              Home
+            </Link>{" "}
+            / Vehicle #{vehicleJourney.VehicleRef}
+          </span>
+        )}
+        <h1 className="text-xl font-bold">
+          {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
+        </h1>
+        <h2 className="text-md">
+          to{" "}
+          <Link
+            href={`/stop/${vehicleJourney.DestinationRef}`}
+            className="hover:underline"
+          >
+            {vehicleJourney.DestinationName}
+          </Link>
+        </h2>
+      </header>
 
       <div className="mt-4">
         {stops.length ? (

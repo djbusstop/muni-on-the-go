@@ -49,7 +49,7 @@ const OnwardCallListItem = ({
         </span>
       </div>
       {/* Right col */}
-      <div className="text-md shrink-0">
+      <div className="text-lg shrink-0">
         <span>{expectedArrivalTime.format("HH:mm")}</span>
       </div>
     </li>
