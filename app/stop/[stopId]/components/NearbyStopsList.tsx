@@ -27,7 +27,7 @@ const NearbyStopsList = ({
         ];
         const newPoint = point(lnglat, stop);
         const distanceFromSelectedStop = distance(selectedStopPoint, newPoint);
-        // Only return firstitems < .25 km away
+        // Only return items < .25 km away
         if (distanceFromSelectedStop !== 0 && distanceFromSelectedStop < 0.25)
           return [...acc, { stop, distance: distanceFromSelectedStop }];
       }
