@@ -1,3 +1,7 @@
+import distance from "@turf/distance";
+import { point } from "@turf/helpers";
+import Link from "next/link";
+
 const NearbyStopsList = ({
   selectedStop,
   stops,
@@ -5,8 +9,59 @@ const NearbyStopsList = ({
   selectedStop: StopPlace;
   stops: ScheduledStopPoint[];
 }) => {
-  console.log(stops);
-  return <ul></ul>;
+  const selectedStopPoint = point([
+    parseFloat(selectedStop.Centroid.Location.Longitude),
+    parseFloat(selectedStop.Centroid.Location.Latitude),
+  ]);
+
+  // List of all stops < .25km away from the selected stop point
+  const stopsWithDistance = stops.reduce(
+    (
+      acc: { stop: ScheduledStopPoint; distance: number }[],
+      stop: ScheduledStopPoint
+    ) => {
+      if (stop) {
+        const lnglat = [
+          parseFloat(stop.Location.Longitude),
+          parseFloat(stop.Location.Latitude),
+        ];
+        const newPoint = point(lnglat, stop);
+        const distanceFromSelectedStop = distance(selectedStopPoint, newPoint);
+        // Only return items < .25 km away
+        if (distanceFromSelectedStop !== 0 && distanceFromSelectedStop < 0.25)
+          return [...acc, { stop, distance: distanceFromSelectedStop }];
+      }
+      return acc;
+    },
+    []
+  );
+
+  const nearestStops = stopsWithDistance.sort(
+    (firstStop, secondStop) => firstStop.distance - secondStop.distance
+  );
+
+  console.log(nearestStops);
+
+  console.log(stopsWithDistance);
+
+  return (
+    <ul>
+      <ul className="mt-2 leading-loose">
+        {nearestStops.map(({ stop }) => {
+          return (
+            <li key={stop.id}>
+              <Link
+                href={`/stop/${stop.id}`}
+                className="hover:underline text-xl"
+              >
+                {stop.Name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </ul>
+  );
 };
 
 export default NearbyStopsList;
