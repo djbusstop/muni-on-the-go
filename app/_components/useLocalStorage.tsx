@@ -18,10 +18,13 @@ export default function useLocalStorage<T>(
 }
 
 function getLocalStorageValue<T>(key: string, defaultValue: T): T {
-  const stringValue = localStorage.getItem(key);
+  const isBrowser = typeof window !== "undefined";
+  const stringValue = isBrowser ? localStorage.getItem(key) : null;
 
   if (stringValue === null || stringValue.length == 0) {
-    localStorage.setItem(key, JSON.stringify(defaultValue));
+    if (isBrowser) {
+      localStorage.setItem(key, JSON.stringify(defaultValue));
+    }
     return defaultValue;
   }
 

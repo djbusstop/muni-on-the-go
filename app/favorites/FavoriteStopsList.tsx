@@ -23,7 +23,8 @@ const FavoriteStopsList = () => {
                 className="hover:underline text-xl"
               >
                 {favoriteStop.StopPointName} -{" "}
-                {favoriteStop.DirectionRef === "OB" ? "Outbound" : "Inbound"}
+                {favoriteStop.DirectionRef === "OB" && "Outbound"}
+                {favoriteStop.DirectionRef === "IB" && "Inbound"}
               </Link>
             </li>
           );
