@@ -29,7 +29,7 @@ const OnwardCallListItem = ({
         borderLeft: "1px solid lightgrey",
         borderRight: "1px solid lightgrey",
         borderTop: "1px solid lightgrey",
-        borderBottom: "5px solid #cd3545",
+        borderBottom: "3px solid #cd3545",
       }}
     >
       {/* Left col */}
