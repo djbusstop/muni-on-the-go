@@ -1,0 +1,37 @@
+{
+  "Contents": {
+    "ResponseTimestamp": "2024-12-12T06:26:11-08:00",
+    "dataObjects": {
+      "id": "SF",
+      "ScheduledStopPoint": [
+        {
+          "id": "15829",
+          "Extensions": {
+            "LocationType": null,
+            "PlatformCode": null,
+            "ParentStation": null,
+            "ValidBetween": {
+              "FromDate": "2024-10-26T00:00:00-08:00",
+              "ToDate": "2025-01-10T23:59:00-08:00"
+            }
+          },
+          "Name": "100 O'Shaughnessy Blvd",
+          "Location": {
+            "Longitude": "-122.450678",
+            "Latitude": "37.744481"
+          },
+          "Url": "https://www.sfmta.com/15829",
+          "StopType": "onstreetBus"
+        },
+
+        {
+          "id": "13354",
+          "Name": "19th Ave & Eucalyptus Dr",
+          "Url": "https://www.sfmta.com/13354",
+          "StopType": "onstreetBus"
+        },
+        null
+      ]
+    }
+  }
+}
