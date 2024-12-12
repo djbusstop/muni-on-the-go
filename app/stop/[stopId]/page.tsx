@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
+import DataAttribution from "@/app/_components/DataAttribution";
 
 export default async function Page({
   params,
@@ -42,6 +43,7 @@ export default async function Page({
       <div className="mt-6">
         <StopVisitsList stopVisits={stopVisits} />
       </div>
+      <DataAttribution />
     </main>
   );
 }

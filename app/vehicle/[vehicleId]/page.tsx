@@ -4,6 +4,7 @@ import fetchVehicleMonitoring, {
   getVehicleJourney,
 } from "./fetchVehicleMonitoring";
 import OnwardCallList from "./components/OnwardCallList";
+import DataAttribution from "@/app/_components/DataAttribution";
 
 export default async function Page({
   params,
@@ -42,6 +43,7 @@ export default async function Page({
           <h2>Tracking is not available. Please refresh to try again</h2>
         )}
       </div>
+      <DataAttribution />
     </main>
   );
 }
