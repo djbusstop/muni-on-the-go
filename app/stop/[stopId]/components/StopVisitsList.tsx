@@ -59,19 +59,19 @@ const StopVisitsList = ({
                 </span>
               )}
             </div>
-            <div className="shrink-0 text-center">
+            <div className="shrink-0 text-center leading-none">
               {stopVisit.VehicleRef ? (
                 <Link
                   href={`/vehicle/${stopVisit.VehicleRef}`}
                   className="hover:underline "
                 >
                   <p className="text-xl leading-none">{delayInMinutes}</p>
-                  <span className="text-sm">min</span>
+                  <span className="text-sm text-secondary">min</span>
                 </Link>
               ) : (
                 <>
                   <p className="text-xl leading-none">{delayInMinutes}</p>
-                  <span className="text-sm">min</span>
+                  <span className="text-sm text-secondary">min</span>
                 </>
               )}
             </div>
