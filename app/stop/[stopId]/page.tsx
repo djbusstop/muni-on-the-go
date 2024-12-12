@@ -8,10 +8,13 @@ import Link from "next/link";
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ stopId: string }>;
+  searchParams: Promise<{ showNearby?: string }>;
 }) {
   const stopIdSlug = (await params).stopId;
+  const showNearbyStops = (await searchParams).showNearby === "true";
 
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
