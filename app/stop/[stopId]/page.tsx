@@ -4,6 +4,7 @@ import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/app/_components/DataAttribution";
 import fetchStopPlace from "./fetchStopPlace";
+import Link from "next/link";
 
 export default async function Page({
   params,
@@ -45,7 +46,13 @@ export default async function Page({
           <h1 className="text-3xl leading-loose font-bold">
             Stop #{stopPlace?.PublicCode}
           </h1>
-          <h3 className="text-xl font-bold">{stopPlace.Name}</h3>
+          <h3 className="text-xl font-bold">
+            <Link
+              href={`geo:${stopPlace.Centroid.Location.Latitude},${stopPlace.Centroid.Location.Longitude}`}
+            >
+              {stopPlace.Name}
+            </Link>
+          </h3>
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
