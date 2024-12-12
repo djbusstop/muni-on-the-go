@@ -75,6 +75,7 @@ export default async function Page({
           <Link
             className="hover:underline"
             href={`/stop/${stopId}?showNearby=true`}
+            replace
           >
             📍 Get nearby stops
           </Link>
