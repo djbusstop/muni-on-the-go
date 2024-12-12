@@ -21,7 +21,7 @@ const OnwardCallListItem = ({
 
   return (
     <li
-      className="flex items-center p-3"
+      className="flex items-center p-3 gap-2"
       style={{
         backgroundColor: "whitesmoke",
         borderTopRightRadius: "5px",
@@ -33,7 +33,7 @@ const OnwardCallListItem = ({
       }}
     >
       {/* Left col */}
-      <div className="flex flex-col flex-grow gap-2 leading-tight">
+      <div className="flex flex-col flex-grow leading-relaxed">
         {nextStop && <span className="text-secondary text-xs">Next stop</span>}
         <Link
           href={`/stop/${onwardCall.StopPointRef}`}

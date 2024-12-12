@@ -33,7 +33,7 @@ const StopVisitsList = ({
         return (
           <li
             key={index}
-            className="flex items-center gap-4 p-3"
+            className="flex items-center gap-2 p-3"
             style={{
               backgroundColor: "whitesmoke",
               borderTopRightRadius: "5px",
@@ -45,12 +45,12 @@ const StopVisitsList = ({
             }}
           >
             <div className="flex flex-col flex-grow">
-              <h3 className="text-md font-semibold flex-grow">
+              <h3 className="text-md font-semibold">
                 {stopVisit.LineRef} {stopVisit.PublishedLineName}
               </h3>
               <span className="text-sm">to {stopVisit.DestinationName}</span>
               {scheduledTime && expectedTime && (
-                <span className="text-xs mt-1">
+                <span className="text-xs mt-0.5">
                   <RelativeTime
                     hideIfOnTime
                     scheduled={scheduledTime}
