@@ -33,7 +33,7 @@ const StopVisitsList = ({
           >
             <div className="flex flex-col flex-grow">
               <h3 className="text-2xl font-bold flex-grow">
-                {stopVisit.LineRef}{" "}
+                {stopVisit.LineRef} {stopVisit.PublishedLineName}
               </h3>
               <span>to {stopVisit.DestinationName}</span>
             </div>

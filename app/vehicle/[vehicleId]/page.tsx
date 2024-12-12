@@ -5,6 +5,7 @@ import fetchVehicleMonitoring, {
 } from "./fetchVehicleMonitoring";
 import OnwardCallList from "./components/OnwardCallList";
 import DataAttribution from "@/ui/DataAttribution";
+import Link from "next/link";
 
 export default async function Page({
   params,
@@ -26,23 +27,31 @@ export default async function Page({
 
   return (
     <main>
-      <h1 className="text-3xl leading-loose font-bold">
-        Vehicle #{vehicleJourney.VehicleRef}
+      <h1 className="text-3xl font-bold">
+        {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
       </h1>
-      {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <h3 className="text-xl font-bold">
-          {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName} to{" "}
+      <h2 className="text-xl">
+        to{" "}
+        <Link
+          href={`/stop/${vehicleJourney.DestinationRef}`}
+          className="hover:underline"
+        >
           {vehicleJourney.DestinationName}
-        </h3>
+        </Link>
+      </h2>
+      {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
+        <span className="text-lg text-secondary leading-loose">
+          Vehicle #{vehicleJourney.VehicleRef}
+        </span>
       )}
 
       <div className="mt-6">
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (
-          <h2 className="text-xl">
+          <p className="text-xl">
             Tracking is not available. Please refresh to try again
-          </h2>
+          </p>
         )}
       </div>
       <DataAttribution />

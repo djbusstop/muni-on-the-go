@@ -46,10 +46,7 @@ export default async function Page({
     <main>
       <header className="flex items-center gap-2">
         <div className="flex-grow">
-          <h1 className="text-3xl leading-loose font-bold">
-            Stop #{stopPlace?.PublicCode}
-          </h1>
-          <h3 className="text-xl font-bold">
+          <h1 className="text-3xl font-bold">
             <Link
               className="hover:underline"
               href={`//maps.apple.com?q=${encodeURIComponent(
@@ -58,7 +55,10 @@ export default async function Page({
             >
               {stopPlace.Name}
             </Link>
-          </h3>
+          </h1>
+          <span className="text-lg text-secondary leading-loose">
+            Stop #{stopPlace?.PublicCode}
+          </span>
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
