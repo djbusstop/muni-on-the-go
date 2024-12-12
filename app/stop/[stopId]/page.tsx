@@ -3,8 +3,10 @@ import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/app/_components/DataAttribution";
-import fetchStopPlace from "./fetchStopPlace";
+import fetchStopPlaces from "./fetchStopPlaces";
 import Link from "next/link";
+import fetchStops from "./fetchStops";
+import NearbyStopsList from "./components/NearbyStopsList";
 
 export default async function Page({
   params,
@@ -19,19 +21,22 @@ export default async function Page({
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
 
-  const [stopResponse, stopMonitoringResponse] = await Promise.allSettled([
-    fetchStopPlace(stopId),
-    fetchStopMonitoring(stopId),
-  ]);
+  const [stopPlaceResponse, stopMonitoringResponse, stopsResponse] =
+    await Promise.allSettled([
+      fetchStopPlaces(stopId),
+      fetchStopMonitoring(stopId),
+      showNearbyStops && fetchStops(),
+    ]);
 
   // Handle Errors
-  if (stopResponse.status !== "fulfilled") throw new Error(stopResponse.reason);
+  if (stopPlaceResponse.status !== "fulfilled")
+    throw new Error(stopPlaceResponse.reason);
   if (stopMonitoringResponse.status !== "fulfilled")
     throw new Error(stopMonitoringResponse.reason);
 
   const stopPlace =
-    stopResponse.value?.Siri?.ServiceDelivery?.DataObjectDelivery?.dataObjects
-      ?.SiteFrame?.stopPlaces?.StopPlace;
+    stopPlaceResponse.value?.Siri?.ServiceDelivery?.DataObjectDelivery
+      ?.dataObjects?.SiteFrame?.stopPlaces?.StopPlace;
 
   const stopVisits =
     stopMonitoringResponse.value?.ServiceDelivery?.StopMonitoringDelivery?.MonitoredStopVisit?.map(
@@ -59,6 +64,12 @@ export default async function Page({
           </h3>
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
+        {stopsResponse.status === "fulfilled" && stopsResponse.value && (
+          <NearbyStopsList
+            selectedStop={stopPlace}
+            stops={stopsResponse.value.Contents.dataObjects.ScheduledStopPoint}
+          />
+        )}
       </header>
 
       <div className="mt-6">

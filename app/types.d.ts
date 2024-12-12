@@ -2,7 +2,7 @@ interface Location {
   Longitude: string; // '-122.393593'
   Latitude: string; // '37.794693'
 }
-// Stops
+// Stop Visits
 
 interface TargetedCall {
   StopPointRef: string; // "16847",
@@ -155,10 +155,10 @@ interface StopPlace {
   };
   PublicCode: string; // "15551";
   TransportMode: string; // "bus";
-  StopPlaceType: string; // "onstreetBus";
+  StopPlaceType: "onstreetBus" | string;
 }
 
-interface StopPlaceResponse {
+interface StopPlacesResponse {
   Siri: {
     ServiceDelivery: {
       ResponseTimestamp: string; // "2024-12-12T03:07:59-08:00";
@@ -175,6 +175,35 @@ interface StopPlaceResponse {
           };
         };
       };
+    };
+  };
+}
+
+// Stops
+
+interface ScheduledStopPoint {
+  id: string; // "15829";
+  Extensions: {
+    LocationType: string | null;
+    PlatformCode: string | null;
+    ParentStation: unknown | null; // never seen a value here
+    ValidBetween: {
+      FromDate: string; // "2024-10-26T00:00:00-08:00";
+      ToDate: string; // "2025-01-10T23:59:00-08:00";
+    };
+  };
+  Name: string; // "100 O'Shaughnessy Blvd";
+  Location: Location;
+  Url: string; // "https://www.sfmta.com/15829";
+  StopType: "onstreetBus" | string;
+}
+
+interface StopsResponse {
+  Contents: {
+    ResponseTimestamp: string; // "2024-12-12T04:17:33-08:00";
+    dataObjects: {
+      id: string; // "SF";
+      ScheduledStopPoint: ScheduledStopPoint[];
     };
   };
 }
