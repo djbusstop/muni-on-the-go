@@ -1,7 +1,7 @@
-import SearchForm from "@/app/_components/SearchForm";
+import SearchForm from "@/ui/SearchForm";
 import RandomVehicleButton from "./vehicle/[vehicleId]/components/RandomVehicleButton";
 import FavoriteStopsList from "./favorites/FavoriteStopsList";
-import Footer from "./_components/Footer";
+import Footer from "../ui/Footer";
 
 export default function Home() {
   return (

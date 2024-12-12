@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
-import DataAttribution from "@/app/_components/DataAttribution";
+import DataAttribution from "@/ui/DataAttribution";
 import fetchStopPlaces from "./fetchStopPlaces";
 import Link from "next/link";
 

@@ -4,7 +4,7 @@ import fetchVehicleMonitoring, {
   getVehicleJourney,
 } from "./fetchVehicleMonitoring";
 import OnwardCallList from "./components/OnwardCallList";
-import DataAttribution from "@/app/_components/DataAttribution";
+import DataAttribution from "@/ui/DataAttribution";
 
 export default async function Page({
   params,
