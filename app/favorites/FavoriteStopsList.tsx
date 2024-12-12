@@ -13,14 +13,14 @@ const FavoriteStopsList = () => {
 
   return (
     <section className="mt-7">
-      <h2 className="text-2xl font-bold">❤️ Favorites</h2>
-      <ul className="mt-2 leading-loose">
+      <h2 className="text-xl font-bold">❤️ Favorites</h2>
+      <ul className="mt-3">
         {favorites.map((favoriteStop) => {
           return (
-            <li key={favoriteStop.StopPointRef}>
+            <li className="mb-2" key={favoriteStop.StopPointRef}>
               <Link
                 href={`/stop/${favoriteStop.StopPointRef}`}
-                className="hover:underline text-xl"
+                className="hover:underline text-lg"
               >
                 {favoriteStop.StopPointName} -{" "}
                 {favoriteStop.DirectionRef === "OB" && "Outbound"}
