@@ -27,6 +27,14 @@ export default async function Page({
 
   return (
     <main>
+      {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
+        <span className="text-xs text-secondary leading-loose">
+          <Link className="hover:underline" href="/">
+            Home
+          </Link>{" "}
+          / Vehicle #{vehicleJourney.VehicleRef}
+        </span>
+      )}
       <h1 className="text-xl font-bold">
         {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
       </h1>
@@ -39,11 +47,6 @@ export default async function Page({
           {vehicleJourney.DestinationName}
         </Link>
       </h2>
-      {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <span className="text-sm text-secondary leading-loose">
-          Vehicle #{vehicleJourney.VehicleRef}
-        </span>
-      )}
 
       <div className="mt-4">
         {stops.length ? (

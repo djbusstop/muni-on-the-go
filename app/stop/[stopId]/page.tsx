@@ -44,6 +44,13 @@ export default async function Page({
     <main>
       <header className="flex items-center gap-2">
         <div className="flex-grow">
+          <span className="text-xs text-secondary">
+            <Link className="hover:underline" href="/">
+              Home
+            </Link>{" "}
+            / Stop #{stopPlace?.PublicCode}
+          </span>
+
           <h1 className="text-xl font-bold">
             <Link
               className="hover:underline"
@@ -54,9 +61,6 @@ export default async function Page({
               {stopPlace.Name}
             </Link>
           </h1>
-          <span className="text-sm text-secondary">
-            Stop #{stopPlace?.PublicCode}
-          </span>
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
