@@ -40,7 +40,9 @@ export default async function Page({
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (
-          <h2>Tracking is not available. Please refresh to try again</h2>
+          <h2 className="text-xl">
+            Tracking is not available. Please refresh to try again
+          </h2>
         )}
       </div>
       <DataAttribution />

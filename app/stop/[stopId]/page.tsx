@@ -82,7 +82,13 @@ export default async function Page({
       </section>
 
       <div className="mt-6">
-        <StopVisitsList stopVisits={stopVisits} />
+        {stopVisits?.length ? (
+          <StopVisitsList stopVisits={stopVisits} />
+        ) : (
+          <p className="text-xl">
+            Data on upcoming departures is not available at this time.
+          </p>
+        )}
       </div>
       <DataAttribution />
     </main>
