@@ -48,7 +48,7 @@ export default async function Page({
           </h1>
           <h3 className="text-xl font-bold">
             <Link
-              href={`geo:${stopPlace.Centroid.Location.Latitude},${stopPlace.Centroid.Location.Longitude}`}
+              href={`comgooglemaps://?place=${stopPlace.Name}center=${stopPlace.Centroid.Location.Latitude},${stopPlace.Centroid.Location.Longitude}&zoom=14&views=transit:`}
             >
               {stopPlace.Name}
             </Link>
