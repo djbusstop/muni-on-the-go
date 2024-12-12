@@ -1,6 +1,7 @@
 import SearchForm from "@/app/_components/SearchForm";
 import RandomVehicleButton from "./vehicle/[vehicleId]/components/RandomVehicleButton";
 import FavoriteStopsList from "./favorites/FavoriteStopsList";
+import Footer from "./_components/Footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
         <section>
           <FavoriteStopsList />
         </section>
+        <div className="mt-2">
+          <Footer />
+        </div>
       </div>
     </main>
   );
