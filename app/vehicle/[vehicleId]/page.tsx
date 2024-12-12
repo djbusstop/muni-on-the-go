@@ -45,7 +45,7 @@ export default async function Page({
         </span>
       )}
 
-      <div className="mt-6">
+      <div className="mt-4">
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (

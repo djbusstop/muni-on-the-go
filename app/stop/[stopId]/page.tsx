@@ -61,7 +61,7 @@ export default async function Page({
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
 
-      <div className="mt-6">
+      <div className="mt-4">
         {stopVisits?.length ? (
           <StopVisitsList stopVisits={stopVisits} />
         ) : (
