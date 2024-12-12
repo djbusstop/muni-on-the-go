@@ -40,6 +40,8 @@ export default async function Page({
 
   const firstStopVisit = stopVisits.at(0);
 
+  console.log(stopPlace);
+
   return (
     <main>
       <header className="flex items-center gap-2">
@@ -50,7 +52,9 @@ export default async function Page({
           <h3 className="text-xl font-bold">
             <Link
               className="hover:underline"
-              href={`//maps.apple.com?ll=${stopPlace.Centroid.Location.Latitude},${stopPlace.Centroid.Location.Longitude}`}
+              href={`//maps.apple.com?q=${encodeURIComponent(
+                `${stopPlace.PostalAddress.AddressLine1}, ${stopPlace.PostalAddress.Town}`
+              )}`}
             >
               {stopPlace.Name}
             </Link>

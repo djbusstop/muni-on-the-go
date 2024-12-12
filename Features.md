@@ -8,3 +8,7 @@
 - Save stop as a favorite
 - View favorite stops on the home page
 - View stop location on the map
+
+To do:
+
+- Connections at stop on vehicle route
