@@ -54,7 +54,7 @@ export default async function Page({
               {stopPlace.Name}
             </Link>
           </h1>
-          <span className="text-sm text-secondary leading-loose">
+          <span className="text-sm text-secondary">
             Stop #{stopPlace?.PublicCode}
           </span>
         </div>

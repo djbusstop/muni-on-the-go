@@ -27,10 +27,10 @@ export default async function Page({
 
   return (
     <main>
-      <h1 className="text-2xl font-bold">
+      <h1 className="text-xl font-bold">
         {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
       </h1>
-      <h2 className="text-xl">
+      <h2 className="text-md">
         to{" "}
         <Link
           href={`/stop/${vehicleJourney.DestinationRef}`}
@@ -40,7 +40,7 @@ export default async function Page({
         </Link>
       </h2>
       {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <span className="text-md text-secondary leading-loose">
+        <span className="text-sm text-secondary leading-loose">
           Vehicle #{vehicleJourney.VehicleRef}
         </span>
       )}

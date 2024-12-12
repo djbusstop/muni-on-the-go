@@ -21,7 +21,7 @@ const OnwardCallListItem = ({
 
   return (
     <li
-      className="flex items-center p-4"
+      className="flex items-center p-3"
       style={{
         backgroundColor: "whitesmoke",
         borderTopRightRadius: "5px",
@@ -33,24 +33,24 @@ const OnwardCallListItem = ({
       }}
     >
       {/* Left col */}
-      <div className="flex flex-col flex-grow">
-        {nextStop && <span className="text-secondary">Next stop</span>}
+      <div className="flex flex-col flex-grow gap-1">
+        {nextStop && <span className="text-secondary text-xs">Next stop</span>}
         <Link
           href={`/stop/${onwardCall.StopPointRef}`}
           className="hover:underline"
         >
-          <h3 className="mb-1 font-bold text-xl">{onwardCall.StopPointName}</h3>
+          <h3 className="font-bold text-md">{onwardCall.StopPointName}</h3>
         </Link>
-        <p>
+        <span className="text-xs">
           <RelativeTime
             scheduled={scheduledArrivalTime.toDate()}
             expected={expectedArrivalTime.toDate()}
           />
-        </p>
+        </span>
       </div>
       {/* Right col */}
-      <div className="text-xl shrink-0">
-        <span>{expectedArrivalTime.format("LT")}</span>
+      <div className="text-md shrink-0">
+        <span>{expectedArrivalTime.format("HH:mm")}</span>
       </div>
     </li>
   );

@@ -33,7 +33,7 @@ const StopVisitsList = ({
         return (
           <li
             key={index}
-            className="flex items-center gap-4 p-4"
+            className="flex items-center gap-4 p-3"
             style={{
               backgroundColor: "whitesmoke",
               borderTopRightRadius: "5px",
