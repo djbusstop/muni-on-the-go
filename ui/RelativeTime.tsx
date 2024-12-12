@@ -1,4 +1,4 @@
-const getRelativeMinutes = (
+export const getRelativeMinutes = (
   scheduledTime: Date,
   expectedTime: Date
 ): number => {
@@ -10,12 +10,17 @@ const getRelativeMinutes = (
 const RelativeTime = ({
   scheduled,
   expected,
+  hideIfOnTime,
 }: {
   scheduled: Date;
   expected: Date;
+  hideIfOnTime?: boolean;
 }) => {
   const minutesDifference = getRelativeMinutes(scheduled, expected);
-  if (minutesDifference === 0) return <span>On time</span>;
+  if (minutesDifference === 0) {
+    if (hideIfOnTime) return null;
+    return <span>On time</span>;
+  }
 
   const absoluteDifference = Math.abs(minutesDifference);
   const isEarly = minutesDifference < 0;

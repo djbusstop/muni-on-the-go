@@ -27,7 +27,7 @@ export default async function Page({
 
   return (
     <main>
-      <h1 className="text-3xl font-bold">
+      <h1 className="text-2xl font-bold">
         {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
       </h1>
       <h2 className="text-xl">
@@ -40,7 +40,7 @@ export default async function Page({
         </Link>
       </h2>
       {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-        <span className="text-lg text-secondary leading-loose">
+        <span className="text-md text-secondary leading-loose">
           Vehicle #{vehicleJourney.VehicleRef}
         </span>
       )}
@@ -49,7 +49,7 @@ export default async function Page({
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (
-          <p className="text-xl">
+          <p className="text-lg">
             Tracking is not available. Please refresh to try again
           </p>
         )}

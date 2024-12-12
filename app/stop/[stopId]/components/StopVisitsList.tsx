@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import Link from "next/link";
 import relativeTime from "dayjs/plugin/relativeTime";
-import RelativeTime from "@/ui/RelativeTime";
+import RelativeTime, { getRelativeMinutes } from "@/ui/RelativeTime";
 
 dayjs.extend(relativeTime);
 
@@ -13,12 +13,23 @@ const StopVisitsList = ({
   return (
     <ul className="flex flex-col list-none gap-4">
       {stopVisits.map((stopVisit, index) => {
-        const arrivalTime = dayjs(
-          stopVisit.MonitoredCall?.ExpectedArrivalTime ||
-            stopVisit.MonitoredCall?.ExpectedDepartureTime ||
-            stopVisit.MonitoredCall?.AimedArrivalTime
-        );
-        const timeDifference = arrivalTime.fromNow(true);
+        const scheduledTime = stopVisit.MonitoredCall
+          ? new Date(stopVisit.MonitoredCall?.AimedArrivalTime)
+          : null;
+
+        const expectedTime = stopVisit.MonitoredCall
+          ? new Date(
+              stopVisit.MonitoredCall.ExpectedArrivalTime ||
+                stopVisit.MonitoredCall.ExpectedDepartureTime ||
+                stopVisit.MonitoredCall.AimedArrivalTime
+            )
+          : null;
+
+        const delayInMinutes =
+          scheduledTime && expectedTime
+            ? getRelativeMinutes(new Date(), expectedTime)
+            : null;
+
         return (
           <li
             key={index}
@@ -34,34 +45,34 @@ const StopVisitsList = ({
             }}
           >
             <div className="flex flex-col flex-grow">
-              <h3 className="text-2xl font-bold flex-grow">
+              <h3 className="text-md font-semibold flex-grow">
                 {stopVisit.LineRef} {stopVisit.PublishedLineName}
               </h3>
-              <span>
-                to {stopVisit.DestinationName}{" "}
-                {stopVisit.MonitoredCall?.AimedDepartureTime && (
-                  <>
-                    •{" "}
-                    <RelativeTime
-                      scheduled={
-                        new Date(stopVisit.MonitoredCall?.AimedArrivalTime)
-                      }
-                      expected={arrivalTime.toDate()}
-                    />
-                  </>
-                )}
-              </span>
+              <span className="text-sm">to {stopVisit.DestinationName}</span>
+              {scheduledTime && expectedTime && (
+                <span className="text-xs mt-1">
+                  <RelativeTime
+                    hideIfOnTime
+                    scheduled={scheduledTime}
+                    expected={expectedTime}
+                  />
+                </span>
+              )}
             </div>
-            <div className="text-xl shrink-0">
+            <div className="shrink-0 text-center">
               {stopVisit.VehicleRef ? (
                 <Link
                   href={`/vehicle/${stopVisit.VehicleRef}`}
                   className="hover:underline "
                 >
-                  {timeDifference}
+                  <p className="text-xl leading-none">{delayInMinutes}</p>
+                  <span className="text-sm">min</span>
                 </Link>
               ) : (
-                timeDifference
+                <>
+                  <p className="text-xl leading-none">{delayInMinutes}</p>
+                  <span className="text-sm">min</span>
+                </>
               )}
             </div>
           </li>
