@@ -33,7 +33,7 @@ const OnwardCallListItem = ({
       }}
     >
       {/* Left col */}
-      <div className="flex flex-col flex-grow gap-2">
+      <div className="flex flex-col flex-grow gap-2 leading-tight">
         {nextStop && <span className="text-secondary text-xs">Next stop</span>}
         <Link
           href={`/stop/${onwardCall.StopPointRef}`}
