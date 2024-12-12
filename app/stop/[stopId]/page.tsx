@@ -5,28 +5,21 @@ import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/app/_components/DataAttribution";
 import fetchStopPlaces from "./fetchStopPlaces";
 import Link from "next/link";
-import fetchStops from "./fetchStops";
-import NearbyStopsList from "./components/NearbyStopsList";
 
 export default async function Page({
   params,
-  searchParams,
 }: {
   params: Promise<{ stopId: string }>;
-  searchParams: Promise<{ showNearby?: string }>;
 }) {
   const stopIdSlug = (await params).stopId;
-  const showNearbyStops = (await searchParams).showNearby === "true";
 
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
 
-  const [stopPlaceResponse, stopMonitoringResponse, stopsResponse] =
-    await Promise.allSettled([
-      fetchStopPlaces(stopId),
-      fetchStopMonitoring(stopId),
-      showNearbyStops && fetchStops(),
-    ]);
+  const [stopPlaceResponse, stopMonitoringResponse] = await Promise.allSettled([
+    fetchStopPlaces(stopId),
+    fetchStopMonitoring(stopId),
+  ]);
 
   // Handle Errors
   if (stopPlaceResponse.status !== "fulfilled")
@@ -65,22 +58,6 @@ export default async function Page({
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
-      <section className="mt-4">
-        {stopsResponse.status === "fulfilled" && stopsResponse.value ? (
-          <NearbyStopsList
-            selectedStop={stopPlace}
-            stops={stopsResponse.value.Contents.dataObjects.ScheduledStopPoint}
-          />
-        ) : (
-          <Link
-            className="hover:underline"
-            href={`/stop/${stopId}?showNearby=true`}
-            replace
-          >
-            📍 Get nearby stops
-          </Link>
-        )}
-      </section>
 
       <div className="mt-6">
         {stopVisits?.length ? (
