@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@turf/distance": "^7.1.0",
-    "@turf/helpers": "^7.1.0",
     "dayjs": "^1.11.13",
     "next": "15.0.4",
     "react": "^19.0.0",
