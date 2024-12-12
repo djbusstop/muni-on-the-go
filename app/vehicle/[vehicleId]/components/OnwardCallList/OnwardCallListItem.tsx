@@ -1,9 +1,9 @@
 import Link from "next/link";
 import RelativeTime from "./RelativeTime";
 import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 
-dayjs.extend(relativeTime);
+dayjs.extend(localizedFormat);
 
 const OnwardCallListItem = ({
   nextStop,
@@ -12,14 +12,12 @@ const OnwardCallListItem = ({
   nextStop: boolean;
   onwardCall: OnwardCall | MonitoredCall;
 }) => {
-  const expectedArrivalTime = new Date(
+  const expectedArrivalTime = dayjs(
     onwardCall.ExpectedArrivalTime ||
       onwardCall.ExpectedDepartureTime ||
       onwardCall.AimedArrivalTime
   );
-  const scheduledArrivalTime = new Date(onwardCall.AimedArrivalTime);
-
-  const timeDifference = dayjs(scheduledArrivalTime).fromNow(true);
+  const scheduledArrivalTime = dayjs(onwardCall.AimedArrivalTime);
 
   return (
     <li
@@ -45,15 +43,14 @@ const OnwardCallListItem = ({
         </Link>
         <p>
           <RelativeTime
-            scheduled={scheduledArrivalTime}
-            expected={expectedArrivalTime}
-          />{" "}
-          • {expectedArrivalTime.toLocaleTimeString("en-US")}
+            scheduled={scheduledArrivalTime.toDate()}
+            expected={expectedArrivalTime.toDate()}
+          />
         </p>
       </div>
       {/* Right col */}
       <div className="text-xl shrink-0">
-        <span>{timeDifference}</span>
+        <span>{expectedArrivalTime.format("LT")}</span>
       </div>
     </li>
   );
