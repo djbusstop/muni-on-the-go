@@ -1,3 +1,7 @@
+interface Location {
+  Longitude: string; // '-122.393593'
+  Latitude: string; // '37.794693'
+}
 // Stops
 
 interface TargetedCall {
@@ -46,10 +50,7 @@ interface MonitoredVehicleJourney extends BaseVehicleJourney {
   };
   Monitored: boolean;
   InCongestion: null; // Not sure other values
-  VehicleLocation: {
-    Longitude: string; // '-122.393593'
-    Latitude: string; // '37.794693'
-  };
+  VehicleLocation: Location;
   Bearing: string; // '135.0000000000'
   Occupancy: "seatsAvailable";
   VehicleRef: string; // '1010'
@@ -111,6 +112,69 @@ interface LiveStopMonitoringResponse {
         MonitoringRef: "14229";
         MonitoredVehicleJourney: MonitoredVehicleJourney;
       }>;
+    };
+  };
+}
+
+// Stop Places
+
+interface StopPlace {
+  "@version": string; // "any";
+  "@id": string; // "15551";
+  ValidBetween: {
+    FromDate: string; // "2024-10-26T00:00:00-08:00";
+    ToDate: string; // "2025-01-10T23:59:00-08:00";
+  };
+  Name: string; // "Mission St & 16th St";
+  Description: unknown; // Probably string?;
+  Centroid: {
+    Location: Location;
+  };
+  AccessibilityAssessment: {
+    "@version": string; // "any";
+    "@id": string; // "15551";
+    MobilityImpairedAccess: string; // "unknown";
+    limitations: {
+      AccessibilityLimitation: {
+        WheelchairAccess: string; // "unknown";
+      };
+    };
+  };
+  PostalAddress: {
+    AddressLine1: string; // "Mission St & 16th St";
+    Town: string; // "San Francisco";
+  };
+  Url: string; // "https://www.sfmta.com/15551";
+  OperatorRef: {
+    "@ref": "SF";
+  };
+  adjacentSites: {
+    ParkingRef: {
+      "@ref": string; // "";
+    };
+  };
+  PublicCode: string; // "15551";
+  TransportMode: string; // "bus";
+  StopPlaceType: string; // "onstreetBus";
+}
+
+interface StopPlaceResponse {
+  Siri: {
+    ServiceDelivery: {
+      ResponseTimestamp: string; // "2024-12-12T03:07:59-08:00";
+      DataObjectDelivery: {
+        ResponseTimestamp: "2024-12-12T03:07:59-08:00";
+        dataObjects: {
+          SiteFrame: {
+            "@version": string; // "any";
+            "@id": "SF";
+            stopPlaces: {
+              StopPlace: StopPlace;
+            };
+            parkings: unknown;
+          };
+        };
+      };
     };
   };
 }

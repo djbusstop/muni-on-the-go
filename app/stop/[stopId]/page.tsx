@@ -3,6 +3,7 @@ import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/app/_components/DataAttribution";
+import fetchStopPlace from "./fetchStopPlace";
 
 export default async function Page({
   params,
@@ -14,30 +15,39 @@ export default async function Page({
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
 
-  const stopMonitoringResponse = await fetchStopMonitoring(stopId);
+  const [stopResponse, stopMonitoringResponse] = await Promise.allSettled([
+    fetchStopPlace(stopId),
+    fetchStopMonitoring(stopId),
+  ]);
+
+  // Handle Errors
+  if (stopResponse.status !== "fulfilled") throw new Error(stopResponse.reason);
+  if (stopMonitoringResponse.status !== "fulfilled")
+    throw new Error(stopMonitoringResponse.reason);
+
+  const stopPlace =
+    stopResponse.value?.Siri?.ServiceDelivery?.DataObjectDelivery?.dataObjects
+      ?.SiteFrame?.stopPlaces?.StopPlace;
+
   const stopVisits =
-    stopMonitoringResponse.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit.map(
+    stopMonitoringResponse.value?.ServiceDelivery?.StopMonitoringDelivery?.MonitoredStopVisit?.map(
       (stopVisit) => stopVisit.MonitoredVehicleJourney
     );
-  const currentStop = stopVisits.at(0);
-  const currentStopCall = currentStop?.MonitoredCall;
 
-  if (!currentStop || !currentStopCall) notFound();
+  if (!stopPlace || !stopVisits) notFound();
+
+  const firstStopVisit = stopVisits.at(0);
 
   return (
     <main>
       <header className="flex items-center gap-2">
         <div className="flex-grow">
           <h1 className="text-3xl leading-loose font-bold">
-            Stop #{currentStopCall?.StopPointRef}
+            Stop #{stopPlace?.PublicCode}
           </h1>
-          {currentStopCall?.StopPointName && (
-            <h3 className="text-xl font-bold">
-              {currentStopCall.StopPointName}
-            </h3>
-          )}
+          <h3 className="text-xl font-bold">{stopPlace.Name}</h3>
         </div>
-        <FavoriteStopButton currentStop={currentStop} />
+        {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
       </header>
 
       <div className="mt-6">
