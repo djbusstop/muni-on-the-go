@@ -48,9 +48,10 @@ export default async function Page({
           </h1>
           <h3 className="text-xl font-bold">
             <Link
+              className="hover:underline"
               href={`https://www.google.com/maps/place/${stopPlace.Name}/@${stopPlace.Centroid.Location.Latitude},${stopPlace.Centroid.Location.Longitude}`}
             >
-              {stopPlace.Name}
+              🗺️ {stopPlace.Name}
             </Link>
           </h3>
         </div>
