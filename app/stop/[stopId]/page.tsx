@@ -64,13 +64,22 @@ export default async function Page({
           </h3>
         </div>
         {firstStopVisit && <FavoriteStopButton currentStop={firstStopVisit} />}
-        {stopsResponse.status === "fulfilled" && stopsResponse.value && (
+      </header>
+      <section className="mt-4">
+        {stopsResponse.status === "fulfilled" && stopsResponse.value ? (
           <NearbyStopsList
             selectedStop={stopPlace}
             stops={stopsResponse.value.Contents.dataObjects.ScheduledStopPoint}
           />
+        ) : (
+          <Link
+            className="hover:underline"
+            href={`/stop/${stopId}?showNearby=true`}
+          >
+            📍 Get nearby stops
+          </Link>
         )}
-      </header>
+      </section>
 
       <div className="mt-6">
         <StopVisitsList stopVisits={stopVisits} />

@@ -27,7 +27,7 @@ const NearbyStopsList = ({
         ];
         const newPoint = point(lnglat, stop);
         const distanceFromSelectedStop = distance(selectedStopPoint, newPoint);
-        // Only return items < .25 km away
+        // Only return firstitems < .25 km away
         if (distanceFromSelectedStop !== 0 && distanceFromSelectedStop < 0.25)
           return [...acc, { stop, distance: distanceFromSelectedStop }];
       }
@@ -36,31 +36,25 @@ const NearbyStopsList = ({
     []
   );
 
-  const nearestStops = stopsWithDistance.sort(
-    (firstStop, secondStop) => firstStop.distance - secondStop.distance
-  );
-
-  console.log(nearestStops);
-
-  console.log(stopsWithDistance);
+  const nearestStops = stopsWithDistance
+    .sort((firstStop, secondStop) => firstStop.distance - secondStop.distance)
+    .slice(0, 4);
 
   return (
-    <ul>
-      <ul className="mt-2 leading-loose">
+    <>
+      <h4 className="text-lg">Nearby Stops</h4>
+      <ul className="mt-2 text-lg leading">
         {nearestStops.map(({ stop }) => {
           return (
             <li key={stop.id}>
-              <Link
-                href={`/stop/${stop.id}`}
-                className="hover:underline text-xl"
-              >
-                {stop.Name}
+              <Link href={`/stop/${stop.id}`} className="hover:underline">
+                🚏 {stop.Name}
               </Link>
             </li>
           );
         })}
       </ul>
-    </ul>
+    </>
   );
 };
 
