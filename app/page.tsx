@@ -16,13 +16,11 @@ export default function Home() {
           The SF transit app for locals who already know where they&apos;re
           going.
         </p>
-        <section className="mt-5 mb-7">
+        <section className="mt-5">
           <SearchForm />
         </section>
-        <section>
-          <FavoriteStopsList />
-        </section>
-        <div className="mt-2">
+        <FavoriteStopsList />
+        <div className="mt-3">
           <Footer />
         </div>
       </div>
