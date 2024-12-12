@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import Link from "next/link";
 import relativeTime from "dayjs/plugin/relativeTime";
+import RelativeTime from "@/ui/RelativeTime";
 
 dayjs.extend(relativeTime);
 
@@ -14,6 +15,7 @@ const StopVisitsList = ({
       {stopVisits.map((stopVisit, index) => {
         const arrivalTime = dayjs(
           stopVisit.MonitoredCall?.ExpectedArrivalTime ||
+            stopVisit.MonitoredCall?.ExpectedDepartureTime ||
             stopVisit.MonitoredCall?.AimedArrivalTime
         );
         const timeDifference = arrivalTime.fromNow(true);
@@ -35,7 +37,20 @@ const StopVisitsList = ({
               <h3 className="text-2xl font-bold flex-grow">
                 {stopVisit.LineRef} {stopVisit.PublishedLineName}
               </h3>
-              <span>to {stopVisit.DestinationName}</span>
+              <span>
+                to {stopVisit.DestinationName}{" "}
+                {stopVisit.MonitoredCall?.AimedDepartureTime && (
+                  <>
+                    •{" "}
+                    <RelativeTime
+                      scheduled={
+                        new Date(stopVisit.MonitoredCall?.AimedArrivalTime)
+                      }
+                      expected={arrivalTime.toDate()}
+                    />
+                  </>
+                )}
+              </span>
             </div>
             <div className="text-xl shrink-0">
               {stopVisit.VehicleRef ? (

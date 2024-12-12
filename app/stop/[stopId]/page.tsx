@@ -40,8 +40,6 @@ export default async function Page({
 
   const firstStopVisit = stopVisits.at(0);
 
-  console.log(stopPlace);
-
   return (
     <main>
       <header className="flex items-center gap-2">

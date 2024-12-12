@@ -1,5 +1,5 @@
 import Link from "next/link";
-import RelativeTime from "./RelativeTime";
+import RelativeTime from "../../../../../ui/RelativeTime";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 
