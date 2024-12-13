@@ -15,7 +15,7 @@ const VehicleIdForm = () => {
     >
       <input
         name="itemId"
-        className="text-xl appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-2"
+        className="text-xl appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         type="number"
         inputMode="numeric"
         pattern="[0-9]*"
