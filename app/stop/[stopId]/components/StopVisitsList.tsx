@@ -33,7 +33,7 @@ const StopVisitsList = ({
 
         return (
           <ListItemLink
-            key={index}
+            key={index + stopVisit.DatedVehicleJourneyRef}
             href={
               stopVisit.VehicleRef
                 ? `/vehicle/${stopVisit.VehicleRef}`

@@ -10,7 +10,7 @@ const OnwardCallList = ({
       {onwardCalls.map((onwardCall, index) => {
         return (
           <OnwardCallListItem
-            key={index}
+            key={onwardCall.StopPointRef}
             onwardCall={onwardCall}
             nextStop={index === 0}
           />
