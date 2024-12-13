@@ -2,6 +2,7 @@ import Link from "next/link";
 import RelativeTime from "../../../../../ui/RelativeTime";
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import clsx from "clsx";
 
 dayjs.extend(localizedFormat);
 
@@ -21,9 +22,7 @@ const OnwardCallListItem = ({
 
   return (
     <li
-      className="flex items-center p-3 gap-2"
       style={{
-        backgroundColor: "whitesmoke",
         borderTopRightRadius: "5px",
         borderTopLeftRadius: "5px",
         borderLeft: "1px solid lightgrey",
@@ -32,26 +31,38 @@ const OnwardCallListItem = ({
         borderBottom: "3px solid #cd3545",
       }}
     >
-      {/* Left col */}
-      <div className="flex flex-col flex-grow leading-relaxed">
-        {nextStop && <span className="text-secondary text-xs">Next stop</span>}
-        <Link
-          href={`/stop/${onwardCall.StopPointRef}`}
-          className="hover:underline"
+      <Link href={`/stop/${onwardCall.StopPointRef}`}>
+        {/* Row */}
+        <div
+          className={clsx([
+            "flex",
+            "items-center",
+            "gap-2",
+            "p-3",
+            "bg-stone-100",
+            "hover:bg-stone-200",
+            "active:bg-stone-200",
+          ])}
         >
-          <h3 className="font-bold text-md">{onwardCall.StopPointName}</h3>
-        </Link>
-        <span className="text-xs">
-          <RelativeTime
-            scheduled={scheduledArrivalTime.toDate()}
-            expected={expectedArrivalTime.toDate()}
-          />
-        </span>
-      </div>
-      {/* Right col */}
-      <div className="text-lg shrink-0">
-        <span>{expectedArrivalTime.format("HH:mm")}</span>
-      </div>
+          {/* Left col */}
+          <div className="flex flex-col flex-grow leading-relaxed">
+            {nextStop && (
+              <span className="text-secondary text-xs">Next stop</span>
+            )}
+            <h3 className="font-bold text-md">{onwardCall.StopPointName}</h3>
+            <span className="text-xs">
+              <RelativeTime
+                scheduled={scheduledArrivalTime.toDate()}
+                expected={expectedArrivalTime.toDate()}
+              />
+            </span>
+          </div>
+          {/* Right col */}
+          <div className="text-lg shrink-0">
+            <span>{expectedArrivalTime.format("HH:mm")}</span>
+          </div>
+        </div>
+      </Link>
     </li>
   );
 };
