@@ -47,7 +47,7 @@ const StopVisitsList = ({
                 <h3 className="text-md font-semibold">
                   {stopVisit.LineRef} {stopVisit.PublishedLineName}{" "}
                   {/* If there is vehicle monitoring */}
-                  {stopVisit.VehicleRef && "📍"}
+                  {stopVisit.VehicleRef && "🧭"}
                 </h3>
                 <span className="text-sm">to {stopVisit.DestinationName}</span>
                 {scheduledTime && expectedTime && (
