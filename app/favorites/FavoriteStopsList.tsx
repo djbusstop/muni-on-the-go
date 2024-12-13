@@ -12,9 +12,9 @@ const FavoriteStopsList = () => {
   if (favorites.length === 0) return null;
 
   return (
-    <section className="mt-7">
+    <section className="mt-6">
       <h2 className="text-xl font-bold">❤️ Favorites</h2>
-      <ul className="mt-3">
+      <ul className="mt-2">
         {favorites.map((favoriteStop) => {
           return (
             <li className="mb-2" key={favoriteStop.StopPointRef}>
