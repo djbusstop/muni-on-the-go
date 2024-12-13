@@ -6,6 +6,7 @@ import fetchVehicleMonitoring, {
 import OnwardCallList from "./components/OnwardCallList";
 import DataAttribution from "@/ui/DataAttribution";
 import Link from "next/link";
+import Breadcrumbs from "@/ui/Breadcrumbs";
 
 export default async function Page({
   params,
@@ -28,15 +29,15 @@ export default async function Page({
   return (
     <main>
       <header>
-        {vehicleJourney?.LineRef && vehicleJourney?.DestinationName && (
-          <span className="text-xs text-secondary">
-            <Link className="hover:underline" href="/">
-              Home
-            </Link>{" "}
-            / Vehicle #{vehicleJourney.VehicleRef}
-          </span>
-        )}
-        <h1 className="text-xl font-bold">
+        <Breadcrumbs
+          links={[
+            <span key={vehicleJourney.VehicleRef}>
+              Vehicle #{vehicleJourney.VehicleRef}
+            </span>,
+          ]}
+        />
+
+        <h1 className="text-xl font-bold mt-3">
           {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
         </h1>
         <h2 className="text-md">
@@ -50,7 +51,7 @@ export default async function Page({
         </h2>
       </header>
 
-      <div className="mt-4">
+      <div className="my-3">
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (

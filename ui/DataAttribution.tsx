@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const DataAttribution = () => {
   return (
-    <div className="pt-3">
+    <div>
       <span className="text-xs text-secondary">
         Data provided by{" "}
         <Link className="hover:underline" href="https://511.org/open-data">

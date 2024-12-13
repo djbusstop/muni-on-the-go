@@ -46,7 +46,7 @@ const StopVisitsList = ({
               <div className="flex flex-col flex-grow">
                 <h3 className="text-md font-semibold">
                   {stopVisit.LineRef} {stopVisit.PublishedLineName}{" "}
-                  {/* If there is vehicle monitoring */}
+                  {/* If there is vehicle monitoring show icon */}
                   {stopVisit.VehicleRef && "📍"}
                 </h3>
                 <span className="text-sm">to {stopVisit.DestinationName}</span>
