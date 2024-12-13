@@ -6,6 +6,7 @@ import DataAttribution from "@/ui/DataAttribution";
 import fetchStopPlaces from "./fetchStopPlaces";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
+import Alert from "@/ui/Alert";
 
 export default async function Page({
   params,
@@ -72,9 +73,7 @@ export default async function Page({
         {stopVisits?.length ? (
           <StopVisitsList stopVisits={stopVisits} />
         ) : (
-          <p className="text-lg">
-            Data on upcoming departures is not available at this time.
-          </p>
+          <Alert label="Upcoming departures are not available. Refresh to try again." />
         )}
       </div>
       <DataAttribution />

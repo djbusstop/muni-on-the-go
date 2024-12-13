@@ -7,6 +7,7 @@ import OnwardCallList from "./components/OnwardCallList";
 import DataAttribution from "@/ui/DataAttribution";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
+import Alert from "@/ui/Alert";
 
 export default async function Page({
   params,
@@ -40,24 +41,24 @@ export default async function Page({
         <h1 className="text-xl font-bold mt-3">
           {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
         </h1>
-        <h2 className="text-md">
-          to{" "}
-          <Link
-            href={`/stop/${vehicleJourney.DestinationRef}`}
-            className="hover:underline"
-          >
-            {vehicleJourney.DestinationName}
-          </Link>
-        </h2>
+        {vehicleJourney.DestinationRef && (
+          <h2 className="text-md">
+            to{" "}
+            <Link
+              href={`/stop/${vehicleJourney.DestinationRef}`}
+              className="hover:underline"
+            >
+              {vehicleJourney.DestinationName}
+            </Link>
+          </h2>
+        )}
       </header>
 
       <div className="my-3">
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (
-          <p className="text-lg">
-            Tracking is not available. Please refresh to try again
-          </p>
+          <Alert label="Tracking is not available. Refresh to try again." />
         )}
       </div>
       <DataAttribution />
