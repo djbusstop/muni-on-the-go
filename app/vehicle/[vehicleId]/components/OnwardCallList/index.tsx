@@ -30,7 +30,7 @@ const OnwardCallList = ({
                 {index === 0 && (
                   <span className="text-secondary text-xs">Next stop</span>
                 )}
-                <h3 className="font-bold text-md">
+                <h3 className="font-semibold text-md">
                   {onwardCall.StopPointName}
                 </h3>
                 <span className="text-xs">
