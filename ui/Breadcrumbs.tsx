@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 
 const Breadcrumbs = ({ links }: { links: ReactElement[] }) => {
   return (
-    <p className="text-xs text-secondary">
+    <p key="breadcrumbs" className="text-xs text-secondary">
       <Link className="hover:underline" href="/">
         Home
       </Link>
