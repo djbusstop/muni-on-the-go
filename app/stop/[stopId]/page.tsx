@@ -62,13 +62,13 @@ export default async function Page({
         </div>
       </header>
 
-      <div className="my-3">
+      <section className="my-3">
         {stopVisits?.length ? (
           <StopVisitsList stopVisits={stopVisits} />
         ) : (
           <Alert label="Upcoming departures are not available. Refresh to try again." />
         )}
-      </div>
+      </section>
       <DataAttribution />
     </main>
   );
