@@ -1,7 +1,7 @@
 "use client";
 
 import { redirect, RedirectType } from "next/navigation";
-import fetchVehicleMonitoring from "../fetchVehicleMonitoring";
+import fetchVehicleMonitoring from "./fetchVehicleMonitoring";
 
 export default function RandomVehicleButton() {
   return (

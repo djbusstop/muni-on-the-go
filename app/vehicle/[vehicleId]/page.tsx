@@ -3,11 +3,11 @@ import fetchVehicleMonitoring, {
   getStops,
   getVehicleJourney,
 } from "./fetchVehicleMonitoring";
-import OnwardCallList from "./components/OnwardCallList";
 import DataAttribution from "@/ui/DataAttribution";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
+import OnwardCallList from "./OnwardCallList";
 
 export default async function Page({
   params,
@@ -32,8 +32,9 @@ export default async function Page({
       <header>
         <Breadcrumbs
           links={[
+            <span key="vehicle">Vehicle</span>,
             <span key={vehicleJourney.VehicleRef}>
-              Vehicle #{vehicleJourney.VehicleRef}
+              #{vehicleJourney.VehicleRef}
             </span>,
           ]}
         />

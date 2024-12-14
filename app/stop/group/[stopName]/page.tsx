@@ -5,9 +5,9 @@ import Breadcrumbs from "@/ui/Breadcrumbs";
 import fetchStops from "../../fetchStops";
 import getStopsByName from "../../getStopsByName";
 import fetchStopMonitoring from "../../fetchStopMonitoring";
-import StopVisitsList from "../../components/StopVisitsList";
 import Alert from "@/ui/Alert";
 import FavoriteStopButton from "@/app/favorites/FavoriteStopButton";
+import StopVisitsList from "../../StopVisitsList";
 
 export default async function Page({
   params,

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import fetchStopMonitoring from "../fetchStopMonitoring";
-import StopVisitsList from "../components/StopVisitsList";
+import StopVisitsList from "../StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/ui/DataAttribution";
 import fetchStopPlace from "../fetchStopPlace";
