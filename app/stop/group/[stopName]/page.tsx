@@ -5,6 +5,7 @@ import Breadcrumbs from "@/ui/Breadcrumbs";
 import fetchStops from "../../fetchStops";
 import getStopsByName from "../../getStopsByName";
 import fetchStopMonitoring from "../../fetchStopMonitoring";
+import StopVisitsList from "../../components/StopVisitsList";
 
 export default async function Page({
   params,
@@ -14,7 +15,10 @@ export default async function Page({
   const stopNameSlug = (await params).stopName;
   const stopName = decodeURIComponent(stopNameSlug);
 
-  const stopsResponse = await fetchStops();
+  const [stopsResponse, stopMonitoringResponse] = await Promise.all([
+    fetchStops(),
+    fetchStopMonitoring(),
+  ]);
 
   const stops = getStopsByName(
     stopName,
@@ -23,12 +27,16 @@ export default async function Page({
 
   if (stops.length === 0) notFound();
 
-  // Get stop monitoring for each stop
-  await Promise.allSettled(
-    stops.map((stop) => {
-      return fetchStopMonitoring(stop.id);
-    })
-  );
+  const stopVisits =
+    stopMonitoringResponse.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit.filter(
+      (stopVisit) => {
+        return stops
+          .map((stop) => stop.id)
+          .includes(
+            stopVisit.MonitoredVehicleJourney.MonitoredCall.StopPointRef
+          );
+      }
+    ).flat();
 
   return (
     <main>
@@ -53,6 +61,13 @@ export default async function Page({
         </div>
       </header>
 
+      <section className="my-3">
+        <StopVisitsList
+          stopVisits={stopVisits.map(
+            (stopVisit) => stopVisit.MonitoredVehicleJourney
+          )}
+        />
+      </section>
       <DataAttribution />
     </main>
   );

@@ -47,9 +47,8 @@ export default async function Page({
       <header>
         <Breadcrumbs
           links={[
-            <span key={stopPlace.PublicCode}>
-              Stop #{stopPlace?.PublicCode}
-            </span>,
+            <span key="stop">Stop</span>,
+            <span key={stopPlace.PublicCode}>#{stopPlace?.PublicCode}</span>,
           ]}
         />
         <div className="flex items-center justify-between mt-3">

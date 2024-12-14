@@ -33,7 +33,7 @@ const StopVisitsList = ({
 
         return (
           <ListItemLink
-            key={index + stopVisit.DatedVehicleJourneyRef}
+            key={index.toString() + stopVisit.DatedVehicleJourneyRef}
             href={
               stopVisit.VehicleRef
                 ? `/vehicle/${stopVisit.VehicleRef}`
@@ -49,7 +49,9 @@ const StopVisitsList = ({
                   {/* If there is vehicle monitoring show icon */}
                   {stopVisit.VehicleRef && "📍"}
                 </h3>
-                <span className="text-sm">to {stopVisit.DestinationName}</span>
+                <span className="text-sm">
+                  {stopVisit.DirectionRef} to {stopVisit.DestinationName}
+                </span>
                 {scheduledTime && expectedTime && (
                   <span className="text-xs mt-0.5">
                     <RelativeTime

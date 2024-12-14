@@ -43,7 +43,8 @@ interface TargetedVehicleJourney extends BaseVehicleJourney {
   TargetedCall: TargetedCall;
 }
 
-interface MonitoredVehicleJourney extends BaseVehicleJourney {
+interface MonitoredVehicleJourney<MonitoredCallType = MonitoredCall | undefined>
+  extends BaseVehicleJourney {
   FramedVehicleJourneyRef: {
     DataFrameRef: string; // '2024-07-29'
     DatedVehicleJourneyRef: string; // '11618992_M31'
@@ -54,7 +55,7 @@ interface MonitoredVehicleJourney extends BaseVehicleJourney {
   Bearing: string; // '135.0000000000'
   Occupancy: "seatsAvailable";
   VehicleRef: string; // '1010'
-  MonitoredCall?: MonitoredCall;
+  MonitoredCall: MonitoredCallType;
   OnwardCalls?: {
     OnwardCall: Array<OnwardCall>;
   };
@@ -110,7 +111,8 @@ interface LiveStopMonitoringResponse {
       MonitoredStopVisit: Array<{
         RecordedAtTime: "2024-12-07T12:58:48Z";
         MonitoringRef: "14229";
-        MonitoredVehicleJourney: MonitoredVehicleJourney;
+        // With required MonitoredCall
+        MonitoredVehicleJourney: MonitoredVehicleJourney<MonitoredCall>;
       }>;
     };
   };
