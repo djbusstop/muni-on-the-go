@@ -4,6 +4,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import fetchStops from "../../fetchStops";
 import getStopsByName from "../../getStopsByName";
+import fetchStopMonitoring from "../../fetchStopMonitoring";
 
 export default async function Page({
   params,
@@ -22,7 +23,12 @@ export default async function Page({
 
   if (stops.length === 0) notFound();
 
-  console.log(stops);
+  // Get stop monitoring for each stop
+  await Promise.allSettled(
+    stops.map((stop) => {
+      return fetchStopMonitoring(stop.id);
+    })
+  );
 
   return (
     <main>

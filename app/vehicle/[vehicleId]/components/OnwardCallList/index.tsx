@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 import ListItemLink from "@/ui/ListItemLink";
 import clsx from "clsx";
 import RelativeTime from "@/ui/RelativeTime";
+import { normalizeStopName } from "@/app/stop/getStopsByName";
 
 const OnwardCallList = ({
   onwardCalls,
@@ -21,7 +22,9 @@ const OnwardCallList = ({
         return (
           <ListItemLink
             key={onwardCall.StopPointRef}
-            href={`/stop/${onwardCall.StopPointRef}`}
+            href={`/stop/group/${encodeURIComponent(
+              normalizeStopName(onwardCall.StopPointName)
+            )}`}
           >
             {/* Row */}
             <div className={clsx(["flex", "items-center", "gap-2"])}>
