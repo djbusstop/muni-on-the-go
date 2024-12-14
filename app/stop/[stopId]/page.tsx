@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
-import fetchStopMonitoring from "./fetchStopMonitoring";
-import StopVisitsList from "./components/StopVisitsList";
+import fetchStopMonitoring from "../fetchStopMonitoring";
+import StopVisitsList from "../StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/ui/DataAttribution";
-import fetchStopPlace from "./fetchStopPlace";
+import fetchStopPlace from "../fetchStopPlace";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
