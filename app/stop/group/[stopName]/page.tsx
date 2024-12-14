@@ -30,8 +30,9 @@ export default async function Page({
     stops.map((stop) => fetchStopMonitoring(stop.id))
   );
 
-  const stopVisits = stopMonitoringResponses.reduce(
-    (acc: MonitoredVehicleJourney[], response) => {
+  // All stop visits sorted by arrival time
+  const stopVisits = stopMonitoringResponses
+    .reduce((acc: MonitoredVehicleJourney<MonitoredCall>[], response) => {
       if (response.status === "fulfilled") {
         return [
           ...acc,
@@ -41,9 +42,21 @@ export default async function Page({
         ];
       }
       return acc;
-    },
-    []
-  );
+    }, [])
+    .sort((firstVisit, secondVisit) => {
+      return (
+        new Date(
+          firstVisit.MonitoredCall.ExpectedArrivalTime ||
+            firstVisit.MonitoredCall.ExpectedDepartureTime ||
+            firstVisit.MonitoredCall.AimedArrivalTime
+        ).getTime() -
+        new Date(
+          secondVisit.MonitoredCall.ExpectedArrivalTime ||
+            secondVisit.MonitoredCall.ExpectedDepartureTime ||
+            secondVisit.MonitoredCall.AimedArrivalTime
+        ).getTime()
+      );
+    });
 
   return (
     <main>
