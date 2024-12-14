@@ -4,7 +4,7 @@ const STOP_ENDPOINT = `https://api.511.org/transit/stops?api_key=${process.env.N
 const fetchStops = async (): Promise<StopsResponse> => {
   // Cache stops response for an hour
   const response = await fetch(STOP_ENDPOINT, {
-    cache: "force-cache",
+    // Cache response for 1 hour
     next: {
       revalidate: 3600,
     },

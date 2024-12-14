@@ -7,7 +7,13 @@ const fetchStopPlaces = async (
   const response = await fetch(
     stopCode
       ? STOP_PLACES_ENDPOINT + `&stop_id=${stopCode}`
-      : STOP_PLACES_ENDPOINT
+      : STOP_PLACES_ENDPOINT,
+    {
+      next: {
+        // Cache response for 1 hour
+        revalidate: 3600,
+      },
+    }
   );
 
   if (!response.ok) {
