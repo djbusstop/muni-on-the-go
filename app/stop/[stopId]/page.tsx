@@ -18,23 +18,17 @@ export default async function Page({
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
 
-  const [stopPlaceResponse, stopMonitoringResponse] = await Promise.allSettled([
+  const [stopPlaceResponse, stopMonitoringResponse] = await Promise.all([
     fetchStopPlace(stopId),
     fetchStopMonitoring(stopId),
   ]);
 
-  // Handle Errors
-  if (stopPlaceResponse.status !== "fulfilled")
-    throw new Error(stopPlaceResponse.reason);
-  if (stopMonitoringResponse.status !== "fulfilled")
-    throw new Error(stopMonitoringResponse.reason);
-
   const stopPlace =
-    stopPlaceResponse.value?.Siri?.ServiceDelivery?.DataObjectDelivery
-      ?.dataObjects?.SiteFrame?.stopPlaces?.StopPlace;
+    stopPlaceResponse.Siri?.ServiceDelivery?.DataObjectDelivery?.dataObjects
+      ?.SiteFrame?.stopPlaces?.StopPlace;
 
   const stopVisits =
-    stopMonitoringResponse.value?.ServiceDelivery?.StopMonitoringDelivery?.MonitoredStopVisit?.map(
+    stopMonitoringResponse.ServiceDelivery?.StopMonitoringDelivery?.MonitoredStopVisit?.map(
       (stopVisit) => stopVisit.MonitoredVehicleJourney
     );
 
