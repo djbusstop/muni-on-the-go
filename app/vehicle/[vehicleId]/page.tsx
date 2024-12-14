@@ -54,13 +54,13 @@ export default async function Page({
         )}
       </header>
 
-      <div className="my-3">
+      <section className="my-3">
         {stops.length ? (
           <OnwardCallList onwardCalls={stops} />
         ) : (
           <Alert label="Tracking is not available. Refresh to try again." />
         )}
-      </div>
+      </section>
       <DataAttribution />
     </main>
   );

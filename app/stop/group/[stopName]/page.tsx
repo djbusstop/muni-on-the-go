@@ -6,6 +6,7 @@ import fetchStops from "../../fetchStops";
 import getStopsByName from "../../getStopsByName";
 import fetchStopMonitoring from "../../fetchStopMonitoring";
 import StopVisitsList from "../../components/StopVisitsList";
+import Alert from "@/ui/Alert";
 
 export default async function Page({
   params,
@@ -15,10 +16,7 @@ export default async function Page({
   const stopNameSlug = (await params).stopName;
   const stopName = decodeURIComponent(stopNameSlug);
 
-  const [stopsResponse, stopMonitoringResponse] = await Promise.all([
-    fetchStops(),
-    fetchStopMonitoring(),
-  ]);
+  const stopsResponse = await fetchStops();
 
   const stops = getStopsByName(
     stopName,
@@ -27,16 +25,24 @@ export default async function Page({
 
   if (stops.length === 0) notFound();
 
-  const stopVisits =
-    stopMonitoringResponse.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit.filter(
-      (stopVisit) => {
-        return stops
-          .map((stop) => stop.id)
-          .includes(
-            stopVisit.MonitoredVehicleJourney.MonitoredCall.StopPointRef
-          );
+  const stopMonitoringResponses = await Promise.allSettled(
+    stops.map((stop) => fetchStopMonitoring(stop.id))
+  );
+
+  const stopVisits = stopMonitoringResponses.reduce(
+    (acc: MonitoredVehicleJourney[], response) => {
+      if (response.status === "fulfilled") {
+        return [
+          ...acc,
+          ...response.value.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit.map(
+            (stopVisit) => stopVisit.MonitoredVehicleJourney
+          ),
+        ];
       }
-    ).flat();
+      return acc;
+    },
+    []
+  );
 
   return (
     <main>
@@ -62,11 +68,11 @@ export default async function Page({
       </header>
 
       <section className="my-3">
-        <StopVisitsList
-          stopVisits={stopVisits.map(
-            (stopVisit) => stopVisit.MonitoredVehicleJourney
-          )}
-        />
+        {stopVisits?.length ? (
+          <StopVisitsList stopVisits={stopVisits} />
+        ) : (
+          <Alert label="Upcoming departures are not available right now." />
+        )}
       </section>
       <DataAttribution />
     </main>
