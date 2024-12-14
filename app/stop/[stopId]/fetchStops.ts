@@ -2,7 +2,13 @@
 const STOP_ENDPOINT = `https://api.511.org/transit/stops?api_key=${process.env.NEXT_PUBLIC_TRANSIT_511_API_TOKEN}&operator_id=SF`;
 
 const fetchStops = async (): Promise<StopsResponse> => {
-  const response = await fetch(STOP_ENDPOINT);
+  // Cache stops response for an hour
+  const response = await fetch(STOP_ENDPOINT, {
+    cache: "force-cache",
+    next: {
+      revalidate: 3600,
+    },
+  });
 
   if (!response.ok) {
     throw new Error(await response.text());
