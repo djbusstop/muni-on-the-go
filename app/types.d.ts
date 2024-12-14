@@ -169,6 +169,7 @@ interface StopPlacesResponse {
             "@version": string; // "any";
             "@id": "SF";
             stopPlaces: {
+              // When only one stop. Will be array if multiple stops.
               StopPlace: StopPlace;
             };
             parkings: unknown;

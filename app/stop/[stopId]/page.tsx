@@ -3,7 +3,7 @@ import fetchStopMonitoring from "./fetchStopMonitoring";
 import StopVisitsList from "./components/StopVisitsList";
 import FavoriteStopButton from "../../favorites/FavoriteStopButton";
 import DataAttribution from "@/ui/DataAttribution";
-import fetchStopPlaces from "./fetchStopPlaces";
+import fetchStopPlace from "./fetchStopPlace";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
@@ -19,7 +19,7 @@ export default async function Page({
   if (isNaN(stopId)) notFound();
 
   const [stopPlaceResponse, stopMonitoringResponse] = await Promise.allSettled([
-    fetchStopPlaces(stopId),
+    fetchStopPlace(stopId),
     fetchStopMonitoring(stopId),
   ]);
 
