@@ -4,10 +4,10 @@ import useLocalStorage from "@/ui/useLocalStorage";
 import { FAVORITES_LOCAL_STORAGE_KEY, FavoriteStop } from "./constants";
 
 const FavoriteStopButton = ({
-  currentStop,
+  stopOptions,
 }: {
   // Requires Monitored Call
-  currentStop: MonitoredVehicleJourney;
+  stopOptions: FavoriteStop;
 }) => {
   const [favorites, setFavorites] = useLocalStorage<FavoriteStop[]>(
     FAVORITES_LOCAL_STORAGE_KEY,
@@ -15,31 +15,22 @@ const FavoriteStopButton = ({
   );
 
   const isCurrentStopInFavorites = favorites.find(
-    (favorite) =>
-      favorite.StopPointRef === currentStop.MonitoredCall?.StopPointRef
+    (favorite) => favorite.id === stopOptions.id
   );
 
   const addStopToFavorites = () => {
     // If already in favorites, do nothing
     if (isCurrentStopInFavorites) return;
-    if (!currentStop.MonitoredCall) return;
-    const favoriteStopObject = {
-      DirectionRef: currentStop.DirectionRef,
-      StopPointRef: currentStop.MonitoredCall.StopPointRef,
-      StopPointName: currentStop.MonitoredCall.StopPointName,
-    };
+
     // Append to list
-    setFavorites([...favorites, favoriteStopObject]);
+    setFavorites([...favorites, stopOptions]);
   };
 
   const removeStopFromFavorites = () => {
     // If not in favorites, do nothing
     if (!isCurrentStopInFavorites) return;
-    if (!currentStop.MonitoredCall) return;
     const favoritesWithoutCurrentStop = favorites.filter(
-      (existingFavorite) =>
-        existingFavorite.StopPointRef !==
-        currentStop.MonitoredCall?.StopPointRef
+      (existingFavorite) => existingFavorite.id !== stopOptions.id
     );
     setFavorites(favoritesWithoutCurrentStop);
   };

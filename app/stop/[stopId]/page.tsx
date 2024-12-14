@@ -57,7 +57,13 @@ export default async function Page({
             </Link>
           </h1>
           {firstStopVisit && (
-            <FavoriteStopButton currentStop={firstStopVisit} />
+            <FavoriteStopButton
+              stopOptions={{
+                name: stopPlace.Name,
+                id: stopPlace["@id"],
+                direction: firstStopVisit.DirectionRef,
+              }}
+            />
           )}
         </div>
       </header>

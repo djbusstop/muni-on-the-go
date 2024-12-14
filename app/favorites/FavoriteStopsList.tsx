@@ -15,16 +15,28 @@ const FavoriteStopsList = () => {
     <section className="mt-6">
       <h2 className="text-xl font-bold">❤️ Favorites</h2>
       <ul className="mt-2">
-        {favorites.map((favoriteStop) => {
+        {favorites.map((favoriteStop, index) => {
+          const isIndividualStop = Boolean(favoriteStop.id);
+
           return (
-            <li className="mb-2" key={favoriteStop.StopPointRef}>
+            <li className="mb-2" key={index.toString() + favoriteStop.id}>
               <Link
-                href={`/stop/${favoriteStop.StopPointRef}`}
+                href={
+                  isIndividualStop
+                    ? `/stop/${favoriteStop.id}`
+                    : `/stop/group/${encodeURIComponent(favoriteStop.name)}`
+                }
                 className="hover:underline text-lg"
               >
-                {favoriteStop.StopPointName} -{" "}
-                {favoriteStop.DirectionRef === "OB" && "Outbound"}
-                {favoriteStop.DirectionRef === "IB" && "Inbound"}
+                {favoriteStop.name}
+                {isIndividualStop && (
+                  // Direction if is individual stop
+                  <>
+                    {" "}
+                    - {favoriteStop.direction === "OB" && "Outbound"}
+                    {favoriteStop.direction === "IB" && "Inbound"}
+                  </>
+                )}
               </Link>
             </li>
           );

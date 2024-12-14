@@ -7,6 +7,7 @@ import getStopsByName from "../../getStopsByName";
 import fetchStopMonitoring from "../../fetchStopMonitoring";
 import StopVisitsList from "../../components/StopVisitsList";
 import Alert from "@/ui/Alert";
+import FavoriteStopButton from "@/app/favorites/FavoriteStopButton";
 
 export default async function Page({
   params,
@@ -64,6 +65,7 @@ export default async function Page({
               {stopName}
             </Link>
           </h1>
+          <FavoriteStopButton stopOptions={{ name: stopName }} />
         </div>
       </header>
 
