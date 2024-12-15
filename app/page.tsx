@@ -9,7 +9,7 @@ export default function Home() {
         {process.env.NODE_ENV === "development" && <RandomVehicleButton />}
         <span className="text-[88px] leading-none text-center">🌁</span>
         <h1 className="text-3xl leading-tight font-extrabold mt-3 mb-2 text-center">
-          MUNI On the Go
+          Muni On the Go
         </h1>
         <p className="text-center">
           The SF transit app for locals who already know where they&apos;re

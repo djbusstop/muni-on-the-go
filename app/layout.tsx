@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Muni On the Go",
-  description: "Bus and train tracker for MUNI",
+  description: "Bus and train tracker for Muni",
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 {
-  "name": "next-muni",
-  "version": "0.1.0",
+  "name": "muni-on-the-go",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
