@@ -48,8 +48,6 @@ const StopVisitsList = ({
                 <h3 className="text-md font-semibold">
                   <RouteDisplay route={stopVisit.LineRef} />{" "}
                   {stopVisit.PublishedLineName}{" "}
-                  {/* If there is vehicle monitoring show icon */}
-                  {stopVisit.VehicleRef && "📍"}
                 </h3>
                 <span className="text-sm">
                   {stopVisit.DirectionRef} to {stopVisit.DestinationName}
@@ -65,7 +63,12 @@ const StopVisitsList = ({
                 )}
               </div>
               {/* Right col */}
-              <div className="shrink-0 text-center leading-none">
+              <div
+                // If there is no vehicle monitoring, greyscale the text
+                className={`shrink-0 text-center leading-none ${
+                  stopVisit.VehicleRef ? "" : "text-secondary"
+                } `}
+              >
                 <p className="text-xl leading-none">{delayInMinutes}</p>
                 <span className="text-sm text-secondary">min</span>
               </div>
