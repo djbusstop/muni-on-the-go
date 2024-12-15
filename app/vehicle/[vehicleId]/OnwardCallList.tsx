@@ -10,7 +10,7 @@ const OnwardCallList = ({
   onwardCalls: Array<OnwardCall>;
 }) => {
   return (
-    <ul className="flex flex-col list-none gap-4">
+    <ul className="flex flex-col list-none gap-3">
       {onwardCalls.map((onwardCall, index) => {
         const expectedArrivalTime = dayjs(
           onwardCall.ExpectedArrivalTime ||

@@ -13,7 +13,7 @@ const StopVisitsList = ({
   stopVisits: MonitoredVehicleJourney[];
 }) => {
   return (
-    <ul className="flex flex-col list-none gap-4">
+    <ul className="flex flex-col list-none gap-3">
       {stopVisits.map((stopVisit, index) => {
         const scheduledTime = stopVisit.MonitoredCall
           ? new Date(stopVisit.MonitoredCall?.AimedArrivalTime)
