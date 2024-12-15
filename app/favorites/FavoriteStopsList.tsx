@@ -12,7 +12,7 @@ const FavoriteStopsList = () => {
   if (favorites.length === 0) return null;
 
   return (
-    <section className="mt-6">
+    <>
       <h2 className="text-xl font-bold">❤️ Favorites</h2>
       <ul className="mt-1">
         {favorites.map((favoriteStop, index) => {
@@ -45,7 +45,7 @@ const FavoriteStopsList = () => {
           );
         })}
       </ul>
-    </section>
+    </>
   );
 };
 

@@ -18,7 +18,9 @@ export default function Home() {
         <section className="mt-5">
           <SearchForm />
         </section>
-        <FavoriteStopsList />
+        <section className="mt-5">
+          <FavoriteStopsList />
+        </section>
       </div>
     </main>
   );
