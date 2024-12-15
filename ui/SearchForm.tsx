@@ -1,6 +1,6 @@
 "use client";
 
-import { notFound, redirect, RedirectType } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 import { useRef, useState } from "react";
 
 const VehicleIdForm = () => {
