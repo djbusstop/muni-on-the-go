@@ -22,7 +22,7 @@ export async function generateMetadata({
 
   return {
     title: `Stop #${stopId} - Muni On the Go`,
-    description: `Live departures for Muni buses and trains at stop ${
+    description: `Live departures for Muni buses and trains at ${
       stopPlace?.Name ? stopPlace.Name : `#${stopId}`
     }`,
   };
