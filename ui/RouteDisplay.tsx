@@ -22,7 +22,7 @@ const RouteDisplay = ({ route }: { route: string }) => {
         fontFamily: "arial",
         background: lineColor.background,
         color: lineColor.color,
-        padding: `3.2px 6px 3px 5.5px`,
+        padding: isBus ? `3.2px 6px 3px 5.5px` : `3.2px 5.5px 2.5px 5.5px`,
         borderRadius: "3px",
       }}
     >
