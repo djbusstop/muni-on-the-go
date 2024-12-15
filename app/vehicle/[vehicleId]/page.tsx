@@ -8,6 +8,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
 import OnwardCallList from "./OnwardCallList";
+import RouteDisplay from "@/ui/RouteDisplay";
 
 export default async function Page({
   params,
@@ -40,7 +41,8 @@ export default async function Page({
         />
 
         <h1 className="text-xl font-bold mt-3">
-          {vehicleJourney.LineRef} {vehicleJourney.PublishedLineName}
+          <RouteDisplay route={vehicleJourney.LineRef} />{" "}
+          {vehicleJourney.PublishedLineName}
         </h1>
         {vehicleJourney.DestinationRef && (
           <h2 className="text-md">

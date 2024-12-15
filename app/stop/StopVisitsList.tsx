@@ -3,6 +3,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import RelativeTime, { getRelativeMinutes } from "@/ui/RelativeTime";
 import clsx from "clsx";
 import ListItemLink from "@/ui/ListItemLink";
+import RouteDisplay from "@/ui/RouteDisplay";
 
 dayjs.extend(relativeTime);
 
@@ -45,7 +46,8 @@ const StopVisitsList = ({
               {/* Left col */}
               <div className="flex flex-col flex-grow">
                 <h3 className="text-md font-semibold">
-                  {stopVisit.LineRef} {stopVisit.PublishedLineName}{" "}
+                  <RouteDisplay route={stopVisit.LineRef} />{" "}
+                  {stopVisit.PublishedLineName}{" "}
                   {/* If there is vehicle monitoring show icon */}
                   {stopVisit.VehicleRef && "📍"}
                 </h3>
