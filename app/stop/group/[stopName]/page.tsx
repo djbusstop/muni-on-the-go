@@ -8,6 +8,21 @@ import fetchStopMonitoring from "../../fetchStopMonitoring";
 import Alert from "@/ui/Alert";
 import FavoriteStopButton from "@/app/favorites/FavoriteStopButton";
 import StopVisitsList from "../../StopVisitsList";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ stopName: string }>;
+}): Promise<Metadata> {
+  const stopName = (await params).stopName;
+  const decodedStopName = decodeURIComponent(stopName);
+
+  return {
+    title: `${decodedStopName} - Muni On the Go`,
+    description: `Live departures for Muni buses and trains at ${decodedStopName}`,
+  };
+}
 
 export default async function Page({
   params,

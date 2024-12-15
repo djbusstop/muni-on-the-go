@@ -9,6 +9,21 @@ import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
 import OnwardCallList from "./OnwardCallList";
 import RouteDisplay from "@/ui/RouteDisplay";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ vehicleId: string }>;
+}): Promise<Metadata> {
+  // read route params
+  const vehicleId = (await params).vehicleId;
+
+  return {
+    title: `Vehicle #${vehicleId} - Muni On the Go`,
+    description: `Live journey monitoring for vehicle #${vehicleId}`,
+  };
+}
 
 export default async function Page({
   params,

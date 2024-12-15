@@ -7,6 +7,26 @@ import fetchStopPlace from "../fetchStopPlace";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ stopId: string }>;
+}): Promise<Metadata> {
+  const stopId = (await params).stopId;
+  const stopPlaceResponse = await fetchStopPlace(stopId);
+  const stopPlace =
+    stopPlaceResponse.Siri?.ServiceDelivery?.DataObjectDelivery?.dataObjects
+      ?.SiteFrame?.stopPlaces?.StopPlace;
+
+  return {
+    title: `Stop #${stopId} - Muni On the Go`,
+    description: `Live departures for Muni buses and trains at stop ${
+      stopPlace?.Name ? stopPlace.Name : `#${stopId}`
+    }`,
+  };
+}
 
 export default async function Page({
   params,
