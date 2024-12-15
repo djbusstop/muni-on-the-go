@@ -1,3 +1,8 @@
+enum Direction {
+  "IB" = "inbound",
+  "OB" = "outbound",
+}
+
 interface Location {
   Longitude: string; // '-122.393593'
   Latitude: string; // '37.794693'
@@ -28,7 +33,7 @@ interface MonitoredCall extends OnwardCall {
 
 interface BaseVehicleJourney {
   LineRef: string; // "45";
-  DirectionRef: "OB" | "IB" | string;
+  DirectionRef: Direction;
   DatedVehicleJourneyRef: string; // "11665786_M11";
   PublishedLineName: string; // "45";
   OperatorRef: "SF";

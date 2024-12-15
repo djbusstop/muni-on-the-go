@@ -8,6 +8,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
 import { Metadata } from "next";
+import DirectionPicker from "@/ui/DirectionPicker";
 
 export async function generateMetadata({
   params,
@@ -55,6 +56,11 @@ export default async function Page({
   if (!stopPlace || !stopVisits) notFound();
 
   const firstStopVisit = stopVisits.at(0);
+  const directions = stopVisits.reduce((acc: Direction[], stopVisit) => {
+    if (acc.length && !acc.includes(stopVisit.DirectionRef))
+      return [...acc, stopVisit.DirectionRef];
+    return acc;
+  }, []);
 
   return (
     <main>
@@ -76,6 +82,10 @@ export default async function Page({
               {stopPlace.Name}
             </Link>
           </h1>
+          <DirectionPicker
+            directions={directions}
+            onChange={(value) => console.log(value)}
+          />
           {firstStopVisit && (
             <FavoriteStopButton
               stopOptions={{
