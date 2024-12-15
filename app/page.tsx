@@ -20,9 +20,6 @@ export default function Home() {
           <SearchForm />
         </section>
         <FavoriteStopsList />
-        <div className="mt-3">
-          <Footer />
-        </div>
       </div>
     </main>
   );

@@ -14,12 +14,15 @@ const FavoriteStopsList = () => {
   return (
     <section className="mt-6">
       <h2 className="text-xl font-bold">❤️ Favorites</h2>
-      <ul className="mt-2">
+      <ul className="mt-1">
         {favorites.map((favoriteStop, index) => {
           const isIndividualStop = Boolean(favoriteStop.id);
 
           return (
-            <li className="mb-2" key={index.toString() + favoriteStop.id}>
+            <li
+              className="mb-1 last:mb-0"
+              key={index.toString() + favoriteStop.id}
+            >
               <Link
                 href={
                   isIndividualStop
