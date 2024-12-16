@@ -35,7 +35,7 @@ const StopVisitsList = ({
   return (
     <>
       <div>
-        <DirectionPicker directions={directions} />
+        <DirectionPicker value={direction} directions={directions} />
       </div>
       <ul className="flex flex-col list-none gap-3">
         {filteredStopVisits.map((stopVisit, index) => {
