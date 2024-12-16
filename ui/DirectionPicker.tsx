@@ -5,8 +5,8 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 export const DIRECTION_SEARCH_PARAM = "direction";
 
 enum DirectionName {
-  IB = "inbound",
-  OB = "outbound",
+  IB = "Inbound",
+  OB = "Outbound",
 }
 
 const DirectionPicker = ({
@@ -22,10 +22,10 @@ const DirectionPicker = ({
 
   if (directions.length <= 1) return null;
 
-  const setDirection = (direction: Direction) => {
+  const setDirection = (newDirection: Direction) => {
     const searchParamsWithUpdatedDirection = {
       ...searchParams,
-      direction: direction,
+      direction: newDirection,
     };
     const redirectUrl =
       pathName +
@@ -79,8 +79,7 @@ const DirectionPicker = ({
               }
             }}
           >
-            {DirectionName[direction].charAt(0).toUpperCase() +
-              DirectionName[direction].slice(1)}{" "}
+            {DirectionName[direction]}{" "}
             {isActive && <span className="leading-none">x</span>}
           </button>
         );
