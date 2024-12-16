@@ -7,7 +7,8 @@ const fetchStopMonitoring = async (
   const response = await fetch(
     stopCode
       ? STOP_MONITORING_ENDPOINT + `&stopCode=${stopCode}`
-      : STOP_MONITORING_ENDPOINT
+      : STOP_MONITORING_ENDPOINT,
+    { next: { revalidate: 60 } }
   );
 
   if (!response.ok) {
