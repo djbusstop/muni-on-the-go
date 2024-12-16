@@ -1,39 +1,35 @@
 "use client";
 import { useState } from "react";
 
-const DirectionPicker = ({
-  directions,
-  onChange,
-}: {
-  directions: Direction[];
-  onChange: (value: Direction[]) => void;
-}) => {
+enum DirectionName {
+  IB = "inbound",
+  OB = "outbound",
+}
+
+const DirectionPicker = ({ directions }: { directions: Direction[] }) => {
   const [pickerState, setPickerState] = useState<Direction[]>(directions);
+
+  if (directions.length <= 1) return null;
 
   return (
     <div>
-      <button
-        onClick={() => {
-          setPickerState(["IB"]);
-          pickerState.length === 1 && pickerState.includes(Direction.OB)
-            ? { background: "blue" }
-            : {};
-        }}
-      >
-        {"inbound".toUpperCase()}
-      </button>
-      <button
-        onClick={() => {
-          setPickerState(["OB"]);
-        }}
-        style={
-          pickerState.length === 1 && pickerState.includes("OB")
-            ? { background: "blue" }
-            : {}
-        }
-      >
-        {"OB".toUpperCase()}
-      </button>
+      {directions.map((direction) => {
+        return (
+          <button
+            key={direction}
+            onClick={() => {
+              setPickerState([direction]);
+            }}
+            style={
+              pickerState.length === 1 && pickerState.includes(direction)
+                ? { background: "blue" }
+                : {}
+            }
+          >
+            {DirectionName[direction].toUpperCase()}
+          </button>
+        );
+      })}
     </div>
   );
 };

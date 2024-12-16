@@ -30,7 +30,7 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ stopName: string }>;
-  searchParams: Promise<{ direction: Direction }>;
+  searchParams: Promise<{ direction?: Direction }>;
 }) {
   const stopNameSlug = (await params).stopName;
   const stopName = decodeURIComponent(stopNameSlug);
@@ -75,13 +75,6 @@ export default async function Page({
             secondVisit.MonitoredCall.AimedArrivalTime
         ).getTime()
       );
-    })
-    .filter((stopVisit) => {
-      // Filter by direction
-      if (directionSearchParam && ["IB", "OB"].includes(directionSearchParam)) {
-        return stopVisit.DirectionRef === directionSearchParam;
-      }
-      return stopVisit;
     });
 
   return (
@@ -110,7 +103,10 @@ export default async function Page({
 
       <section className="my-3">
         {stopVisits?.length ? (
-          <StopVisitsList stopVisits={stopVisits} />
+          <StopVisitsList
+            stopVisits={stopVisits}
+            direction={directionSearchParam}
+          />
         ) : (
           <Alert label="Upcoming departures are not available right now." />
         )}
