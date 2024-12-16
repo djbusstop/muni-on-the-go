@@ -22,8 +22,6 @@ const StopVisitsList = ({
     return acc;
   }, []);
 
-  if (directions.length <= 1) return null;
-
   const filteredStopVisits = stopVisits.filter((stopVisit) => {
     // Filter by direction
     if (direction && ["IB", "OB"].includes(direction)) {
@@ -34,9 +32,11 @@ const StopVisitsList = ({
 
   return (
     <>
-      <div className="mb-2">
-        <DirectionPicker value={direction} directions={directions} />
-      </div>
+      {directions.length >= 2 && (
+        <div className="mb-2">
+          <DirectionPicker value={direction} directions={directions} />
+        </div>
+      )}
       <ul className="flex flex-col list-none gap-3">
         {filteredStopVisits.map((stopVisit, index) => {
           const scheduledTime = stopVisit.MonitoredCall

@@ -14,7 +14,6 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ stopName: string }>;
-  searchParams: Promise<{ direction: Direction }>;
 }): Promise<Metadata> {
   const stopName = (await params).stopName;
   const decodedStopName = decodeURIComponent(stopName);

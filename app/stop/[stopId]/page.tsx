@@ -31,10 +31,13 @@ export async function generateMetadata({
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ stopId: string }>;
+  searchParams: Promise<{ direction?: Direction }>;
 }) {
   const stopIdSlug = (await params).stopId;
+  const directionSearchParam = (await searchParams).direction;
 
   const stopId = parseInt(stopIdSlug);
   if (isNaN(stopId)) notFound();
@@ -101,7 +104,10 @@ export default async function Page({
 
       <section className="my-3">
         {stopVisits?.length ? (
-          <StopVisitsList stopVisits={stopVisits} />
+          <StopVisitsList
+            stopVisits={stopVisits}
+            direction={directionSearchParam}
+          />
         ) : (
           <Alert label="Upcoming departures are not available. Refresh to try again." />
         )}
