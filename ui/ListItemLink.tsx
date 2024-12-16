@@ -20,7 +20,7 @@ const ListItemLink = ({
       <OptionalLink href={href}>
         <div
           className={clsx([
-            "p-3",
+            "p-2.5",
             "bg-stone-100",
             href && ["hover:bg-stone-200", "active:bg-stone-200"],
           ])}

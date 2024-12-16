@@ -62,12 +62,12 @@ const DirectionPicker = ({
               "px-2",
               "rounded-full",
               isActive
-                ? ["bg-blue-500", "hover:bg-blue-600", "text-white"]
+                ? ["bg-emerald-600", "hover:bg-emerald-700", "text-white"]
                 : [
-                    "text-gray-800",
+                    "text-gray-700",
                     "border",
-                    "border-gray-800",
-                    "hover:bg-gray-200",
+                    "border-gray-700",
+                    "hover:bg-gray-100",
                   ],
             ])}
             key={direction}

@@ -73,7 +73,7 @@ export default async function Page({
         />
         <div className="flex items-center justify-between mt-3">
           <div>
-            <h1 className="text-xl font-bold">
+            <h1 className="text-xl font-bold leading-tight">
               <Link
                 className="hover:underline"
                 href={`//maps.apple.com?q=${encodeURIComponent(
@@ -87,7 +87,7 @@ export default async function Page({
               href={`/stop/group/${encodeURIComponent(
                 normalizeStopName(stopPlace.Name)
               )}`}
-              className="text-sm hover:underline"
+              className="text-xs hover:underline"
             >
               Show parent station
             </Link>

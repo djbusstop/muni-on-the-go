@@ -86,8 +86,8 @@ const StopVisitsList = ({
                     stopVisit.VehicleRef ? "" : "text-secondary"
                   } `}
                 >
-                  <p className="text-xl leading-none">{delayInMinutes}</p>
-                  <span className="text-sm text-secondary">min</span>
+                  <p className="text-lg leading-none">{delayInMinutes}</p>
+                  <span className="text-xs text-secondary">min</span>
                 </div>
               </div>
             </ListItemLink>
