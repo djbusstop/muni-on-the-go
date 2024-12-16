@@ -8,6 +8,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
 import Alert from "@/ui/Alert";
 import { Metadata } from "next";
+import { normalizeStopName } from "../getStopsByName";
 
 export async function generateMetadata({
   params,
@@ -55,11 +56,6 @@ export default async function Page({
   if (!stopPlace || !stopVisits) notFound();
 
   const firstStopVisit = stopVisits.at(0);
-  // const directions = stopVisits.reduce((acc: Direction[], stopVisit) => {
-  //   if (acc.length && !acc.includes(stopVisit.DirectionRef))
-  //     return [...acc, stopVisit.DirectionRef];
-  //   return acc;
-  // }, []);
 
   return (
     <main>
@@ -71,16 +67,26 @@ export default async function Page({
           ]}
         />
         <div className="flex items-center justify-between mt-3">
-          <h1 className="text-xl font-bold">
+          <div>
+            <h1 className="text-xl font-bold">
+              <Link
+                className="hover:underline"
+                href={`//maps.apple.com?q=${encodeURIComponent(
+                  `${stopPlace.PostalAddress.AddressLine1}, ${stopPlace.PostalAddress.Town}`
+                )}`}
+              >
+                {stopPlace.Name}
+              </Link>
+            </h1>
             <Link
-              className="hover:underline"
-              href={`//maps.apple.com?q=${encodeURIComponent(
-                `${stopPlace.PostalAddress.AddressLine1}, ${stopPlace.PostalAddress.Town}`
+              href={`/stop/group/${encodeURIComponent(
+                normalizeStopName(stopPlace.Name)
               )}`}
+              className="text-sm hover:underline"
             >
-              {stopPlace.Name}
+              Show parent station
             </Link>
-          </h1>
+          </div>
           {firstStopVisit && (
             <FavoriteStopButton
               stopOptions={{
