@@ -63,7 +63,7 @@ const StopVisitsList = ({
               <div className={clsx(["flex", "items-center", "gap-2"])}>
                 {/* Left col */}
                 <div className="flex flex-col flex-grow">
-                  <h3 className="text-md font-semibold">
+                  <h3 className="text-md font-semibold leading-loose">
                     <RouteDisplay route={stopVisit.LineRef} />{" "}
                     {stopVisit.PublishedLineName}{" "}
                   </h3>
@@ -71,8 +71,9 @@ const StopVisitsList = ({
                     {stopVisit.DirectionRef} to {stopVisit.DestinationName}
                   </span>
                   <span className="text-xs mt-0.5">
+                    {dayjs(expectedTime).format("HH:mm")}
+                    {" • "}
                     <RelativeTime
-                      hideIfOnTime
                       scheduled={scheduledTime}
                       expected={expectedTime}
                     />
