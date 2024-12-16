@@ -13,22 +13,21 @@ const StopVisitsList = ({
   stopVisits,
 }: {
   direction?: Direction;
-  stopVisits: MonitoredVehicleJourney[];
+  stopVisits: MonitoredVehicleJourney<MonitoredCall>[];
 }) => {
-  // Directions at stop
+  // Available directions. There will be at least one stop with each direction
   const directions = stopVisits.reduce((acc: Direction[], stopVisit) => {
     if (!acc.includes(stopVisit.DirectionRef))
       return [...acc, stopVisit.DirectionRef];
     return acc;
   }, []);
 
-  const filteredStopVisits = stopVisits.filter((stopVisit) => {
-    // Filter by direction
-    if (direction && ["IB", "OB"].includes(direction)) {
-      return stopVisit.DirectionRef === direction;
-    }
-    return stopVisit;
-  });
+  // Filter stop visits by direction
+  const filteredStopVisits = direction
+    ? stopVisits.filter((stopVisit) => {
+        return stopVisit.DirectionRef === direction;
+      })
+    : stopVisits;
 
   return (
     <>
@@ -39,22 +38,17 @@ const StopVisitsList = ({
       )}
       <ul className="flex flex-col list-none gap-3">
         {filteredStopVisits.map((stopVisit, index) => {
-          const scheduledTime = stopVisit.MonitoredCall
-            ? new Date(stopVisit.MonitoredCall?.AimedArrivalTime)
-            : null;
+          const scheduledTime = new Date(
+            stopVisit.MonitoredCall?.AimedArrivalTime
+          );
 
-          const expectedTime = stopVisit.MonitoredCall
-            ? new Date(
-                stopVisit.MonitoredCall.ExpectedArrivalTime ||
-                  stopVisit.MonitoredCall.ExpectedDepartureTime ||
-                  stopVisit.MonitoredCall.AimedArrivalTime
-              )
-            : null;
+          const expectedTime = new Date(
+            stopVisit.MonitoredCall.ExpectedArrivalTime ||
+              stopVisit.MonitoredCall.ExpectedDepartureTime ||
+              stopVisit.MonitoredCall.AimedArrivalTime
+          );
 
-          const delayInMinutes =
-            scheduledTime && expectedTime
-              ? getRelativeMinutes(new Date(), expectedTime)
-              : null;
+          const delayInMinutes = getRelativeMinutes(new Date(), expectedTime);
 
           return (
             <ListItemLink
@@ -76,15 +70,13 @@ const StopVisitsList = ({
                   <span className="text-sm">
                     {stopVisit.DirectionRef} to {stopVisit.DestinationName}
                   </span>
-                  {scheduledTime && expectedTime && (
-                    <span className="text-xs mt-0.5">
-                      <RelativeTime
-                        hideIfOnTime
-                        scheduled={scheduledTime}
-                        expected={expectedTime}
-                      />
-                    </span>
-                  )}
+                  <span className="text-xs mt-0.5">
+                    <RelativeTime
+                      hideIfOnTime
+                      scheduled={scheduledTime}
+                      expected={expectedTime}
+                    />
+                  </span>
                 </div>
                 {/* Right col */}
                 <div

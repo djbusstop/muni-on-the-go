@@ -56,6 +56,8 @@ export default async function Page({
       (stopVisit) => stopVisit.MonitoredVehicleJourney
     );
 
+  console.log(directionSearchParam);
+
   if (!stopPlace || !stopVisits) notFound();
 
   const firstStopVisit = stopVisits.at(0);

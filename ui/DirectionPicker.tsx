@@ -35,9 +35,9 @@ const DirectionPicker = ({
     router.push(redirectUrl);
   };
 
-  const removeDirection = (direction: Direction) => {
+  const removeDirection = () => {
     const searchParamsWithoutDirection = Object.entries(searchParams).filter(
-      ([key]) => key !== direction
+      ([key]) => key !== DIRECTION_SEARCH_PARAM
     );
     const redirectUrl =
       pathName +
@@ -73,7 +73,7 @@ const DirectionPicker = ({
             key={direction}
             onClick={() => {
               if (isActive) {
-                removeDirection(direction);
+                removeDirection();
               } else {
                 setDirection(direction);
               }
