@@ -81,6 +81,7 @@ export default async function Page({
       if (directionSearchParam && ["IB", "OB"].includes(directionSearchParam)) {
         return stopVisit.DirectionRef === directionSearchParam;
       }
+      return stopVisit;
     });
 
   return (
