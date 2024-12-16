@@ -1,7 +1,4 @@
-enum Direction {
-  "IB" = "inbound",
-  "OB" = "outbound",
-}
+type Direction = "IB" | "OB";
 
 interface Location {
   Longitude: string; // '-122.393593'

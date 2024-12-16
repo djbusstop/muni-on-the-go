@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 const DirectionPicker = ({
@@ -13,25 +14,25 @@ const DirectionPicker = ({
     <div>
       <button
         onClick={() => {
-          setPickerState([Direction.IB]);
+          setPickerState(["IB"]);
           pickerState.length === 1 && pickerState.includes(Direction.OB)
             ? { background: "blue" }
             : {};
         }}
       >
-        {Direction.IB.toUpperCase()}
+        {"inbound".toUpperCase()}
       </button>
       <button
         onClick={() => {
-          setPickerState([Direction.OB]);
+          setPickerState(["OB"]);
         }}
         style={
-          pickerState.length === 1 && pickerState.includes(Direction.OB)
+          pickerState.length === 1 && pickerState.includes("OB")
             ? { background: "blue" }
             : {}
         }
       >
-        {Direction.OB.toUpperCase()}
+        {"OB".toUpperCase()}
       </button>
     </div>
   );

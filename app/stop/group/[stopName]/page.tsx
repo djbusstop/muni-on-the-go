@@ -14,6 +14,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ stopName: string }>;
+  searchParams: Promise<{ direction: Direction }>;
 }): Promise<Metadata> {
   const stopName = (await params).stopName;
   const decodedStopName = decodeURIComponent(stopName);
@@ -26,11 +27,14 @@ export async function generateMetadata({
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ stopName: string }>;
+  searchParams: Promise<{ direction: Direction }>;
 }) {
   const stopNameSlug = (await params).stopName;
   const stopName = decodeURIComponent(stopNameSlug);
+  const directionSearchParam = (await searchParams).direction;
 
   const stopsResponse = await fetchStops();
 
@@ -71,6 +75,12 @@ export default async function Page({
             secondVisit.MonitoredCall.AimedArrivalTime
         ).getTime()
       );
+    })
+    .filter((stopVisit) => {
+      // Filter by direction
+      if (directionSearchParam && ["IB", "OB"].includes(directionSearchParam)) {
+        return stopVisit.DirectionRef === directionSearchParam;
+      }
     });
 
   return (
