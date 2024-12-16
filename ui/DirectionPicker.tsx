@@ -19,8 +19,6 @@ const DirectionPicker = ({
   const router = useRouter();
   const pathName = usePathname();
   const searchParams = useSearchParams();
-  console.log(searchParams);
-  console.log(pathName);
 
   if (directions.length <= 1) return null;
 
@@ -51,17 +49,20 @@ const DirectionPicker = ({
 
   return (
     <div className={clsx(["flex", "gap-1"])}>
-      {directions.map((direction) => {
+      {directions.sort().map((direction) => {
         const isActive = value === direction;
         return (
           <button
             className={clsx([
+              "flex",
+              "items-center",
+              "gap-1",
               "text-xs",
               "py-1",
-              "px-3",
+              "px-2",
               "rounded-full",
               isActive
-                ? ["bg-blue-500", "hover:bg-blue-700", "text-white"]
+                ? ["bg-blue-500", "hover:bg-blue-600", "text-white"]
                 : [
                     "text-gray-800",
                     "border",
@@ -80,7 +81,7 @@ const DirectionPicker = ({
           >
             {DirectionName[direction].charAt(0).toUpperCase() +
               DirectionName[direction].slice(1)}{" "}
-            {isActive ? " X" : ""}
+            {isActive && <span className="leading-none">x</span>}
           </button>
         );
       })}

@@ -34,7 +34,7 @@ const StopVisitsList = ({
 
   return (
     <>
-      <div className="mb-1">
+      <div className="mb-2">
         <DirectionPicker value={direction} directions={directions} />
       </div>
       <ul className="flex flex-col list-none gap-3">
