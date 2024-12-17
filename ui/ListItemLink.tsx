@@ -12,6 +12,8 @@ const ListItemLink = ({
       style={{
         borderTopRightRadius: "5px",
         borderTopLeftRadius: "5px",
+        borderBottomLeftRadius: highlight ? "0px" : "5px",
+        borderBottomRightRadius: highlight ? "0px" : "5px",
         borderLeft: "1px solid lightgrey",
         borderRight: "1px solid lightgrey",
         borderTop: "1px solid lightgrey",
@@ -21,7 +23,7 @@ const ListItemLink = ({
       <OptionalLink href={href}>
         <div
           className={clsx([
-            "p-2.5",
+            "p-2",
             "bg-stone-100",
             href && ["hover:bg-stone-200", "active:bg-stone-200"],
           ])}
