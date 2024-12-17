@@ -1,5 +1,5 @@
 "use client";
-import useLocalStorage from "@/ui/useLocalStorage";
+import useLocalStorage from "@/lib/useLocalStorage";
 import { FAVORITES_LOCAL_STORAGE_KEY, FavoriteStop } from "./constants";
 import Link from "next/link";
 
