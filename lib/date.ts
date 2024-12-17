@@ -6,7 +6,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 
 export const localDate = (datestring: string) => {
-  console.log(datestring);
   const date = dayjs(datestring);
   return date.tz("America/Los_Angeles");
 };

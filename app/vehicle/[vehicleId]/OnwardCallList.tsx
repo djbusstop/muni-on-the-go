@@ -1,6 +1,6 @@
 import ListItemLink from "@/ui/ListItemLink";
 import clsx from "clsx";
-import RelativeTime from "@/ui/RelativeTime";
+import RelativeTime from "@/ui/time/RelativeTime";
 import { normalizeStopName } from "@/app/stop/getStopsByName";
 import { localDate } from "@/lib/date";
 

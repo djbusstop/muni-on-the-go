@@ -1,4 +1,4 @@
-import RelativeTime, { getRelativeMinutes } from "@/ui/RelativeTime";
+import RelativeTime, { getRelativeMinutes } from "@/ui/time/RelativeTime";
 import clsx from "clsx";
 import ListItemLink from "@/ui/ListItemLink";
 import RouteDisplay from "@/ui/RouteDisplay";
