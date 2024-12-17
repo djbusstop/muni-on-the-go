@@ -1,8 +1,9 @@
 import ListItemLink from "@/ui/ListItemLink";
 import clsx from "clsx";
-import RelativeTime from "@/ui/time/RelativeTime";
 import { normalizeStopName } from "@/app/stop/getStopsByName";
 import { localDate } from "@/lib/date";
+import HourMin from "@/ui/time/HourMin";
+import Punctuality from "@/ui/time/Punctuality";
 
 const OnwardCallList = ({
   onwardCalls,
@@ -39,7 +40,7 @@ const OnwardCallList = ({
                   {onwardCall.StopPointName}
                 </h3>
                 <span className="text-xs">
-                  <RelativeTime
+                  <Punctuality
                     scheduled={scheduledArrivalTime.toDate()}
                     expected={expectedArrivalTime.toDate()}
                   />
@@ -47,7 +48,7 @@ const OnwardCallList = ({
               </div>
               {/* Right col */}
               <div className="text-lg shrink-0">
-                <span>{expectedArrivalTime.format("HH:mm")}</span>
+                <HourMin date={expectedArrivalTime} />
               </div>
             </div>
           </ListItemLink>

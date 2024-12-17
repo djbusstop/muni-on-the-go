@@ -1,9 +1,10 @@
-import RelativeTime, { getRelativeMinutes } from "@/ui/time/RelativeTime";
 import clsx from "clsx";
 import ListItemLink from "@/ui/ListItemLink";
 import RouteDisplay from "@/ui/RouteDisplay";
 import DirectionPicker from "@/ui/DirectionPicker";
 import { localDate } from "@/lib/date";
+import Punctuality from "@/ui/time/Punctuality";
+import WaitTime from "@/ui/time/WaitTime";
 
 const StopVisitsList = ({
   direction,
@@ -47,11 +48,6 @@ const StopVisitsList = ({
               stopVisit.MonitoredCall.AimedArrivalTime
           );
 
-          const delayInMinutes = getRelativeMinutes(
-            new Date(),
-            expectedTime.toDate()
-          );
-
           return (
             <ListItemLink
               key={index.toString() + stopVisit.DatedVehicleJourneyRef}
@@ -76,22 +72,17 @@ const StopVisitsList = ({
                   <span className="text-xs mt-0.5">
                     {expectedTime.format("HH:mm")}
                     {" • "}
-                    <RelativeTime
+                    <Punctuality
                       scheduled={scheduledTime.toDate()}
                       expected={expectedTime.toDate()}
                     />
                   </span>
                 </div>
                 {/* Right col */}
-                <div
-                  // If there is no vehicle monitoring, greyscale the text
-                  className={`shrink-0 text-center leading-none ${
-                    stopVisit.VehicleRef ? "" : "text-secondary"
-                  } `}
-                >
-                  <p className="text-lg leading-none">{delayInMinutes}</p>
-                  <span className="text-xs text-secondary">min</span>
-                </div>
+                <WaitTime
+                  expectedTime={expectedTime.toDate()}
+                  tracking={Boolean(stopVisit.VehicleRef)}
+                />
               </div>
             </ListItemLink>
           );
