@@ -29,11 +29,12 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ stopName: string }>;
-  searchParams: Promise<{ direction?: Direction }>;
+  searchParams: Promise<{ direction?: Direction; arrivingOn?: string }>;
 }) {
   const stopNameSlug = (await params).stopName;
   const stopName = decodeURIComponent(stopNameSlug);
   const directionSearchParam = (await searchParams).direction;
+  const arrivalVehicleId = (await searchParams).arrivingOn;
 
   const stopsResponse = await fetchStops();
 
@@ -105,6 +106,7 @@ export default async function Page({
           <StopVisitsList
             stopVisits={stopVisits}
             direction={directionSearchParam}
+            arrivalVehicleId={arrivalVehicleId}
           />
         ) : (
           <Alert label="Upcoming departures are not available right now." />

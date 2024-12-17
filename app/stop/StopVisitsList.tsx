@@ -8,9 +8,11 @@ import { localDate } from "@/lib/date";
 const StopVisitsList = ({
   direction,
   stopVisits,
+  arrivalVehicleId,
 }: {
   direction?: Direction;
   stopVisits: MonitoredVehicleJourney<MonitoredCall>[];
+  arrivalVehicleId?: string;
 }) => {
   // Available directions. There will be at least one stop with each direction
   const directions = stopVisits.reduce((acc: Direction[], stopVisit) => {
@@ -53,6 +55,7 @@ const StopVisitsList = ({
           return (
             <ListItemLink
               key={index.toString() + stopVisit.DatedVehicleJourneyRef}
+              highlight={stopVisit.VehicleRef === arrivalVehicleId}
               href={
                 stopVisit.VehicleRef
                   ? `/vehicle/${stopVisit.VehicleRef}`

@@ -74,7 +74,7 @@ export default async function Page({
 
       <section className="my-3">
         {stops.length ? (
-          <OnwardCallList onwardCalls={stops} />
+          <OnwardCallList onwardCalls={stops} vehicleId={vehicleId} />
         ) : (
           <Alert label="Tracking is not available. Refresh to try again." />
         )}

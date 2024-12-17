@@ -6,8 +6,10 @@ import { localDate } from "@/lib/date";
 
 const OnwardCallList = ({
   onwardCalls,
+  vehicleId,
 }: {
   onwardCalls: Array<OnwardCall>;
+  vehicleId: number;
 }) => {
   return (
     <ul className="flex flex-col list-none gap-3">
@@ -24,7 +26,7 @@ const OnwardCallList = ({
             key={onwardCall.StopPointRef}
             href={`/stop/group/${encodeURIComponent(
               normalizeStopName(onwardCall.StopPointName)
-            )}`}
+            )}?arrivingOn=${vehicleId}`}
           >
             {/* Row */}
             <div className={clsx(["flex", "items-center", "gap-2"])}>

@@ -4,8 +4,9 @@ import { PropsWithChildren } from "react";
 
 const ListItemLink = ({
   children,
+  highlight,
   href,
-}: PropsWithChildren<{ href?: string }>) => {
+}: PropsWithChildren<{ href?: string; highlight?: boolean }>) => {
   return (
     <li
       style={{
@@ -14,7 +15,7 @@ const ListItemLink = ({
         borderLeft: "1px solid lightgrey",
         borderRight: "1px solid lightgrey",
         borderTop: "1px solid lightgrey",
-        borderBottom: "3px solid #cd3545",
+        borderBottom: highlight ? "3px solid green" : "3px solid #cd3545",
       }}
     >
       <OptionalLink href={href}>
