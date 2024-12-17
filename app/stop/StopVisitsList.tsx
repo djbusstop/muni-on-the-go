@@ -24,7 +24,7 @@ const StopVisitsList = ({
 
   const filteredStopVisits = stopVisits.filter((stopVisit) => {
     // Filter stop visits by direction
-    if (direction && stopVisit.DirectionRef === direction) return true;
+    if (direction && stopVisit.DirectionRef !== direction) return false;
     // Always keep the arrival vehicle in the list
     if (arrivalVehicleId && arrivalVehicleId === stopVisit.VehicleRef)
       return true;
