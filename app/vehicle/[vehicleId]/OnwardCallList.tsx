@@ -1,8 +1,8 @@
-import dayjs from "dayjs";
 import ListItemLink from "@/ui/ListItemLink";
 import clsx from "clsx";
 import RelativeTime from "@/ui/RelativeTime";
 import { normalizeStopName } from "@/app/stop/getStopsByName";
+import { localDate } from "@/lib/date";
 
 const OnwardCallList = ({
   onwardCalls,
@@ -12,12 +12,12 @@ const OnwardCallList = ({
   return (
     <ul className="flex flex-col list-none gap-3">
       {onwardCalls.map((onwardCall, index) => {
-        const expectedArrivalTime = dayjs(
+        const expectedArrivalTime = localDate(
           onwardCall.ExpectedArrivalTime ||
             onwardCall.ExpectedDepartureTime ||
             onwardCall.AimedArrivalTime
         );
-        const scheduledArrivalTime = dayjs(onwardCall.AimedArrivalTime);
+        const scheduledArrivalTime = localDate(onwardCall.AimedArrivalTime);
 
         return (
           <ListItemLink

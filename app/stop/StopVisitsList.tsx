@@ -1,12 +1,9 @@
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
 import RelativeTime, { getRelativeMinutes } from "@/ui/RelativeTime";
 import clsx from "clsx";
 import ListItemLink from "@/ui/ListItemLink";
 import RouteDisplay from "@/ui/RouteDisplay";
 import DirectionPicker from "@/ui/DirectionPicker";
-
-dayjs.extend(relativeTime);
+import { localDate } from "@/lib/date";
 
 const StopVisitsList = ({
   direction,
@@ -38,17 +35,20 @@ const StopVisitsList = ({
       )}
       <ul className="flex flex-col list-none gap-3">
         {filteredStopVisits.map((stopVisit, index) => {
-          const scheduledTime = new Date(
-            stopVisit.MonitoredCall?.AimedArrivalTime
+          const scheduledTime = localDate(
+            stopVisit.MonitoredCall.AimedArrivalTime
           );
 
-          const expectedTime = new Date(
+          const expectedTime = localDate(
             stopVisit.MonitoredCall.ExpectedArrivalTime ||
               stopVisit.MonitoredCall.ExpectedDepartureTime ||
               stopVisit.MonitoredCall.AimedArrivalTime
           );
 
-          const delayInMinutes = getRelativeMinutes(new Date(), expectedTime);
+          const delayInMinutes = getRelativeMinutes(
+            new Date(),
+            expectedTime.toDate()
+          );
 
           return (
             <ListItemLink
@@ -71,11 +71,11 @@ const StopVisitsList = ({
                     {stopVisit.DirectionRef} to {stopVisit.DestinationName}
                   </span>
                   <span className="text-xs mt-0.5">
-                    {dayjs(expectedTime).format("HH:mm")}
+                    {expectedTime.format("HH:mm")}
                     {" • "}
                     <RelativeTime
-                      scheduled={scheduledTime}
-                      expected={expectedTime}
+                      scheduled={scheduledTime.toDate()}
+                      expected={expectedTime.toDate()}
                     />
                   </span>
                 </div>
