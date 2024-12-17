@@ -1,6 +1,6 @@
 import SearchForm from "@/ui/SearchForm";
 import RandomVehicleButton from "./vehicle/[vehicleId]/RandomVehicleButton";
-import FavoriteStopsList from "./favorites/FavoriteStopsList";
+import FavoriteStopsList from "../ui/favorites/FavoriteStopsList";
 
 export default function Home() {
   return (

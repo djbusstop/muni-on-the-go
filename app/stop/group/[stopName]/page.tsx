@@ -6,7 +6,7 @@ import fetchStops from "../../fetchStops";
 import getStopsByName from "../../getStopsByName";
 import fetchStopMonitoring from "../../fetchStopMonitoring";
 import Alert from "@/ui/Alert";
-import FavoriteStopButton from "@/app/favorites/FavoriteStopButton";
+import FavoriteStopButton from "@/ui/favorites/FavoriteStopButton";
 import StopVisitsList from "../../StopVisitsList";
 import { Metadata } from "next";
 
