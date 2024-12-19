@@ -15,7 +15,7 @@ const StopVisitsList = ({
   stopVisits: MonitoredVehicleJourney<MonitoredCall>[];
   arrivalVehicleId?: string;
 }) => {
-  // Available directions. There will be at least one stop with each direction.
+  // Available directions. There will be at least one stop visit in each direction.
   const directions = stopVisits.reduce((acc: Direction[], stopVisit) => {
     if (!acc.includes(stopVisit.DirectionRef))
       return [...acc, stopVisit.DirectionRef];
@@ -25,9 +25,6 @@ const StopVisitsList = ({
   const filteredStopVisits = stopVisits.filter((stopVisit) => {
     // Filter stop visits by direction
     if (direction && stopVisit.DirectionRef !== direction) return false;
-    // Always keep the arrival vehicle in the list
-    if (arrivalVehicleId && arrivalVehicleId === stopVisit.VehicleRef)
-      return true;
     return true;
   });
 

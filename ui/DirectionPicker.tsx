@@ -4,6 +4,19 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 export const DIRECTION_SEARCH_PARAM = "direction";
 
+const buildUrlWithQueryParameters = (
+  path: string,
+  queryParameters: Record<string, string | number | boolean>
+) => {
+  const url =
+    path +
+    `?${Object.entries(queryParameters)
+      .map(([key, value]) => `${key}=${value}`)
+      .join("&")}`;
+
+  return url;
+};
+
 enum DirectionName {
   IB = "Inbound",
   OB = "Outbound",
@@ -24,26 +37,24 @@ const DirectionPicker = ({
 
   const setDirection = (newDirection: Direction) => {
     const searchParamsWithUpdatedDirection = {
-      ...searchParams,
+      ...Object.fromEntries(searchParams.entries()),
       direction: newDirection,
     };
-    const redirectUrl =
-      pathName +
-      `?${Object.entries(searchParamsWithUpdatedDirection).map(
-        ([key, value]) => `${key}=${value}`
-      )}`;
+    const redirectUrl = buildUrlWithQueryParameters(
+      pathName,
+      searchParamsWithUpdatedDirection
+    );
     router.push(redirectUrl);
   };
 
   const removeDirection = () => {
-    const searchParamsWithoutDirection = Object.entries(searchParams).filter(
-      ([key]) => key !== DIRECTION_SEARCH_PARAM
+    const searchParamsWithoutDirection = searchParams
+      .entries()
+      .filter(([key]) => key !== DIRECTION_SEARCH_PARAM);
+    const redirectUrl = buildUrlWithQueryParameters(
+      pathName,
+      Object.fromEntries(searchParamsWithoutDirection)
     );
-    const redirectUrl =
-      pathName +
-      `?${Object.entries(searchParamsWithoutDirection).map(
-        ([key, value]) => `${key}=${value}`
-      )}`;
     router.push(redirectUrl);
   };
 
