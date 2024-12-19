@@ -27,10 +27,13 @@ export async function generateMetadata({
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ vehicleId: string }>;
+  searchParams: Promise<{ boardingAt?: string }>;
 }) {
   const vehicleIdSlug = (await params).vehicleId;
+  const boardingStopId = (await searchParams).boardingAt;
 
   // Parse vehicle ID to number
   const vehicleId = parseInt(vehicleIdSlug);
@@ -74,7 +77,11 @@ export default async function Page({
 
       <section className="my-3">
         {stops.length ? (
-          <OnwardCallList onwardCalls={stops} vehicleId={vehicleId} />
+          <OnwardCallList
+            onwardCalls={stops}
+            vehicleId={vehicleId}
+            boardingStopId={boardingStopId}
+          />
         ) : (
           <Alert label="Tracking is not available. Refresh to try again." />
         )}

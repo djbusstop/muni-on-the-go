@@ -8,9 +8,11 @@ import Punctuality from "@/ui/time/Punctuality";
 const OnwardCallList = ({
   onwardCalls,
   vehicleId,
+  boardingStopId,
 }: {
   onwardCalls: Array<OnwardCall>;
   vehicleId: number;
+  boardingStopId?: string;
 }) => {
   return (
     <ul className="flex flex-col list-none gap-3">
@@ -28,6 +30,7 @@ const OnwardCallList = ({
             href={`/stop/group/${encodeURIComponent(
               normalizeStopName(onwardCall.StopPointName)
             )}?arrivingOn=${vehicleId}`}
+            highlight={boardingStopId === onwardCall.StopPointRef}
           >
             {/* Row */}
             <div className={clsx(["flex", "items-center", "gap-2"])}>

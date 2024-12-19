@@ -53,7 +53,7 @@ const StopVisitsList = ({
               highlight={stopVisit.VehicleRef === arrivalVehicleId}
               href={
                 stopVisit.VehicleRef
-                  ? `/vehicle/${stopVisit.VehicleRef}`
+                  ? `/vehicle/${stopVisit.VehicleRef}?boardingAt=${stopVisit.MonitoredCall.StopPointRef}`
                   : undefined
               }
             >
