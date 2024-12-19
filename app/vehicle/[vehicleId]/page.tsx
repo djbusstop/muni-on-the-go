@@ -16,7 +16,6 @@ export async function generateMetadata({
 }: {
   params: Promise<{ vehicleId: string }>;
 }): Promise<Metadata> {
-  // read route params
   const vehicleId = (await params).vehicleId;
 
   return {

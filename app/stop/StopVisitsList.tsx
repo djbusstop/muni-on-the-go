@@ -7,12 +7,12 @@ import Punctuality from "@/ui/time/Punctuality";
 import WaitTime from "@/ui/time/WaitTime";
 
 const StopVisitsList = ({
-  direction,
   stopVisits,
+  direction,
   arrivalVehicleId,
 }: {
-  direction?: Direction;
   stopVisits: MonitoredVehicleJourney<MonitoredCall>[];
+  direction?: Direction;
   arrivalVehicleId?: string;
 }) => {
   // Available directions. There will be at least one stop visit in each direction.
