@@ -43,7 +43,7 @@ const VehicleIdForm = () => {
           Search
         </button>
         <button
-          className="bg-gray-100 hover:bg-gray-200 text-white font-bold py-2 px-4 border border-gray-400 rounded text-lg"
+          className="bg-gray-100 hover:bg-gray-200 text-white font-bold p-2 border border-gray-400 rounded text-lg"
           onClick={() => {
             router.push("/stop/nearby");
           }}
