@@ -1,12 +1,13 @@
 "use client";
 
 import clsx from "clsx";
-import { redirect, RedirectType } from "next/navigation";
+import { redirect, RedirectType, useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 const VehicleIdForm = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [inputValue, setInputValue] = useState<string>();
+  const router = useRouter();
 
   return (
     <form
@@ -41,7 +42,12 @@ const VehicleIdForm = () => {
         >
           Search
         </button>
-        <button className="bg-gray-100 hover:bg-gray-200 text-white font-bold py-2 px-4 border border-gray-400 rounded text-lg">
+        <button
+          className="bg-gray-100 hover:bg-gray-200 text-white font-bold py-2 px-4 border border-gray-400 rounded text-lg"
+          onClick={() => {
+            router.push("/stop/nearby");
+          }}
+        >
           📍
         </button>
       </div>
