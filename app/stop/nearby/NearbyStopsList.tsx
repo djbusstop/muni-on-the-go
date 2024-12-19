@@ -6,13 +6,11 @@ import getNearbyStops, { LatLng } from "./getNearbyStops";
 import Link from "next/link";
 
 const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
-  const [permisison, setPermisison] = useState(false);
   const [latlng, setLatlng] = useState<LatLng>();
 
   const getLocation = () => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setPermisison(true);
         setLatlng({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -25,18 +23,14 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
     getLocation();
   }, []);
 
-  console.log(permisison);
-  console.log(latlng);
-
-  if (!permisison || !latlng) {
+  if (!latlng) {
     return <Alert label="Location permission is required for this feature." />;
   }
 
   const nearbyStops = getNearbyStops(stops, latlng);
-  console.log(nearbyStops);
 
   if (!nearbyStops?.length) {
-    return <h3>No stops within half of a mile..</h3>;
+    return <Alert label="No stops within half of a mile" />;
   }
 
   return (
