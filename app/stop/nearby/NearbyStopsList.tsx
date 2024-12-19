@@ -43,16 +43,16 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
     <ul>
       {nearbyStops.map((stop) => {
         return (
-          <li key={stop.normalizedName} className="mb-2 last:mb-0 text-md">
+          <li key={stop.normalizedName} className="mb-3 last:mb-0 text-md">
             <Link
-              className="flex gap-2 align-top"
+              className="flex gap-2 items-center"
               href={`/stop/group/${stop.normalizedName}`}
             >
-              <div className="">🚏</div>
+              <div className="text-lg">🚏</div>
               <div className="leading-none hover:underline">
                 {stop.normalizedName} <br />
                 <span className="text-secondary text-xs">
-                  {Math.round(stop.distance * 10) / 10} miles
+                  {Math.round(stop.distance * 100) / 100} miles
                 </span>
               </div>
             </Link>
