@@ -40,7 +40,16 @@ const FavoriteStopButton = ({
 
   return (
     <button
-      aria-label="Save stop as favorite"
+      aria-label={
+        isCurrentStopInFavorites
+          ? "Remove stop from favorites"
+          : "Save stop as favorite"
+      }
+      title={
+        isCurrentStopInFavorites
+          ? "Remove stop from favorites"
+          : "Save stop as favorite"
+      }
       className="text-2xl"
       onClick={() => {
         if (isCurrentStopInFavorites) removeStopFromFavorites();

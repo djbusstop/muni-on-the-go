@@ -43,6 +43,8 @@ const VehicleIdForm = () => {
           Search
         </button>
         <button
+          aria-label="Find nearby stops"
+          title="Find nearby stops"
           className="bg-gray-100 hover:bg-gray-200 text-white font-bold p-2 border border-gray-400 rounded text-lg"
           onClick={() => {
             router.push("/stop/nearby");
