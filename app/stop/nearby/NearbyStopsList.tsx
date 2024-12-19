@@ -43,7 +43,7 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
     <ul>
       {nearbyStops.map((stop) => {
         return (
-          <li key={stop.normalizedName} className="mb-1 last:mb-0 text-lg">
+          <li key={stop.normalizedName} className="mb-1 last:mb-0 text-md">
             <Link
               className="hover:underline"
               href={`/stop/group/${stop.normalizedName}`}
