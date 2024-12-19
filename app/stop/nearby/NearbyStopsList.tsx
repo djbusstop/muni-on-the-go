@@ -45,11 +45,11 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
         return (
           <li key={stop.normalizedName} className="mb-2 last:mb-0 text-md">
             <Link
-              className="hover:underline flex gap-2 align-top"
+              className="flex gap-2 align-top"
               href={`/stop/group/${stop.normalizedName}`}
             >
-              <div>🚏</div>
-              <div className="leading-tight">
+              <div className="">🚏</div>
+              <div className="leading-none hover:underline">
                 {stop.normalizedName} <br />
                 <span className="text-secondary text-xs">
                   {Math.round(stop.distance * 10) / 10} miles
