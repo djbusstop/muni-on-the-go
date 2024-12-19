@@ -18,7 +18,7 @@ const getNearbyStops = (stops: ScheduledStopPoint[], latlng: LatLng) => {
 
   const stopsByName = groupStopsByName(stops);
 
-  // Get all stops < .4 miles away
+  // Get all stops < .5 miles away
   const nearbyStops = Object.entries(stopsByName).reduce(
     (acc: NormalizedStopWithDistance[], [, value]) => {
       const firstStop = value.stops.at(0);
@@ -33,7 +33,7 @@ const getNearbyStops = (stops: ScheduledStopPoint[], latlng: LatLng) => {
             units: "miles",
           });
 
-          if (distanceBetween < 0.4) {
+          if (distanceBetween < 0.5) {
             return [
               ...acc,
               {

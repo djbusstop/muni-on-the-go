@@ -49,7 +49,7 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
               href={`/stop/group/${stop.normalizedName}`}
             >
               🚏 {stop.normalizedName}{" "}
-              <span className="text-secondary">
+              <span className="text-secondary text-sm">
                 {Math.round(stop.distance * 10) / 10} miles
               </span>
             </Link>
