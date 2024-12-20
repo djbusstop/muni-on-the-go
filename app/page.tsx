@@ -1,6 +1,7 @@
 import SearchForm from "@/ui/SearchForm";
 import RandomVehicleButton from "./vehicle/[vehicleId]/RandomVehicleButton";
 import FavoriteStopsList from "../ui/favorites/FavoriteStopsList";
+import Footer from "@/ui/Footer";
 
 export default function Home() {
   return (
@@ -18,9 +19,10 @@ export default function Home() {
         <section className="mt-5">
           <SearchForm />
         </section>
-        <section className="mt-5">
+        <section className="my-5">
           <FavoriteStopsList />
         </section>
+        <Footer />
       </div>
     </main>
   );
