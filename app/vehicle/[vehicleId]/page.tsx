@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import fetchVehicleMonitoring, {
   getStops,
   getVehicleJourney,
-} from "./fetchVehicleMonitoring";
+} from "../fetchVehicleMonitoring";
 import DataAttribution from "@/ui/DataAttribution";
 import Link from "next/link";
 import Breadcrumbs from "@/ui/Breadcrumbs";
