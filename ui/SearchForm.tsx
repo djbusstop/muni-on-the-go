@@ -26,23 +26,6 @@ const VehicleIdForm = () => {
       />
       <div className={clsx(["flex", "gap-2"])}>
         <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-lg flex-grow"
-          onClick={(event) => {
-            event.preventDefault();
-            formRef.current?.reportValidity();
-            if (inputValue && typeof inputValue === "string") {
-              const searchId = parseInt(inputValue);
-              if (inputValue.length === 4) {
-                redirect(`/vehicle/${searchId}`, RedirectType.push);
-              }
-              redirect(`/stop/${searchId}`, RedirectType.push);
-            }
-          }}
-        >
-          Search
-        </button>
-        <button
           aria-label="Find nearby stops"
           title="Find nearby stops"
           className="bg-gray-100 hover:bg-gray-200 text-white font-bold p-2 border border-gray-400 rounded text-lg"
@@ -61,6 +44,23 @@ const VehicleIdForm = () => {
           }}
         >
           🚌
+        </button>
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-lg flex-grow"
+          onClick={(event) => {
+            event.preventDefault();
+            formRef.current?.reportValidity();
+            if (inputValue && typeof inputValue === "string") {
+              const searchId = parseInt(inputValue);
+              if (inputValue.length === 4) {
+                redirect(`/vehicle/${searchId}`, RedirectType.push);
+              }
+              redirect(`/stop/${searchId}`, RedirectType.push);
+            }
+          }}
+        >
+          Search
         </button>
       </div>
     </form>
