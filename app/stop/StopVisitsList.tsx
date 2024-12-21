@@ -66,7 +66,8 @@ const StopVisitsList = ({
                     {stopVisit.PublishedLineName}{" "}
                   </h3>
                   <span className="text-sm">
-                    {stopVisit.DirectionRef} to {stopVisit.DestinationName}
+                    {stopVisit.DirectionRef === "IB" ? "→ " : "← "}
+                    {stopVisit.DestinationName}
                   </span>
                   <span className="text-xs mt-0.5">
                     {expectedTime.format("HH:mm")}
