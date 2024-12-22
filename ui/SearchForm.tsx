@@ -35,7 +35,7 @@ const VehicleIdForm = () => {
         >
           🚏
         </button>
-        <button
+        {/* <button
           aria-label="Find nearby vehicles"
           title="Find nearby vehicles"
           className="bg-gray-100 hover:bg-gray-200 text-white font-bold p-2 border border-gray-400 rounded text-lg"
@@ -44,7 +44,7 @@ const VehicleIdForm = () => {
           }}
         >
           🚌
-        </button>
+        </button> */}
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded text-lg flex-grow"
