@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "MuniOTG",
     description: "Bus and train tracker for Muni",
     start_url: "/",
-    display: "standalone",
+    display: "minimal-ui",
     background_color: "#fff",
     theme_color: "#fff",
     icons: [
