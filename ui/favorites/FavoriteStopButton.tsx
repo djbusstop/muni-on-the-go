@@ -14,8 +14,11 @@ const FavoriteStopButton = ({
     []
   );
 
+  console.log(favorites);
+
   const isCurrentStopInFavorites = favorites.find((favorite) => {
-    if (favorite.id) {
+    // Check if stop with id in favorites
+    if (favorite.id && stopOptions.id) {
       return favorite.id === stopOptions.id;
     }
     return favorite.name === stopOptions.name;
