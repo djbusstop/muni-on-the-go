@@ -25,7 +25,7 @@ const ListItemLink = ({
           className={clsx([
             "p-2",
             "bg-stone-100",
-            href && ["hover:bg-stone-200", "active:bg-stone-200"],
+            href && ["active:bg-stone-200"],
           ])}
         >
           {children}
