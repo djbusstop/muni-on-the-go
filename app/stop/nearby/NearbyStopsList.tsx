@@ -34,7 +34,7 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
   }
 
   return (
-    <ul className="mt-1">
+    <ul>
       {nearbyStops.map((stop, index) => {
         return (
           <li
