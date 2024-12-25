@@ -80,12 +80,8 @@ export default async function Page({
   return (
     <main>
       <header>
-        <Breadcrumbs
-          links={[
-            <span key="stop">Stop</span>,
-            <span key={stopName}>{stopName}</span>,
-          ]}
-        />
+        <Breadcrumbs links={[<span key={1}>🚏</span>]} />
+
         <div className="flex items-center justify-between mt-3">
           <h1 className="text-xl font-bold">
             <Link

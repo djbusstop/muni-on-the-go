@@ -17,7 +17,7 @@ export default async function Page() {
   return (
     <main>
       <header>
-        <Breadcrumbs links={[<span key="stop">Nearby stops</span>]} />
+        <Breadcrumbs links={[<span key={"a"}>🚏</span>]} />{" "}
         <div className="flex items-center justify-between mt-3">
           <h1 className="text-xl font-bold">Nearby stops</h1>
         </div>

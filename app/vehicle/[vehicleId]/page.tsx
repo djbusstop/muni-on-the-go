@@ -48,14 +48,7 @@ export default async function Page({
   return (
     <main>
       <header>
-        <Breadcrumbs
-          links={[
-            <span key="vehicle">Vehicle</span>,
-            <span key={vehicleJourney.VehicleRef}>
-              #{vehicleJourney.VehicleRef}
-            </span>,
-          ]}
-        />
+        <Breadcrumbs links={[<span key={vehicleId}>🚌</span>]} />
 
         <h1 className="text-xl font-bold mt-3">
           <RouteDisplay route={vehicleJourney.LineRef} />{" "}
