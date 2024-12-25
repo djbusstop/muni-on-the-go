@@ -21,7 +21,10 @@ const FavoriteStopButton = ({
     if (favorite.id && stopOptions.id) {
       return favorite.id === stopOptions.id;
     }
-    return favorite.name === stopOptions.name;
+    if (!favorite.id && !stopOptions.id) {
+      return favorite.name === stopOptions.name;
+    }
+    return false;
   });
 
   const addStopToFavorites = () => {
@@ -35,9 +38,11 @@ const FavoriteStopButton = ({
   const removeStopFromFavorites = () => {
     // If not in favorites, do nothing
     if (!isCurrentStopInFavorites) return;
-    const favoritesWithoutCurrentStop = favorites.filter(
-      (existingFavorite) => existingFavorite.id !== stopOptions.id
-    );
+
+    const favoritesWithoutCurrentStop = favorites.filter((existingFavorite) => {
+      return existingFavorite !== isCurrentStopInFavorites;
+    });
+
     setFavorites(favoritesWithoutCurrentStop);
   };
 
