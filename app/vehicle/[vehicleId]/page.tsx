@@ -56,7 +56,7 @@ export default async function Page({
           links={[<span key={vehicleId}>{isMetro ? "🚃" : "🚌"}</span>]}
         />
 
-        <h1 className="text-xl font-bold mt-3">
+        <h1 className="text-xl font-bold mt-4">
           <RouteDisplay route={vehicleJourney.LineRef} />{" "}
           {vehicleJourney.PublishedLineName}
         </h1>
