@@ -10,7 +10,7 @@ const Breadcrumbs = ({ links }: { links?: ReactElement[] }) => {
       {links?.map((link) => {
         return (
           <>
-            <span className="ml-2 mr-1">/</span>
+            <span className="mx-2">/</span>
             {link}
           </>
         );
