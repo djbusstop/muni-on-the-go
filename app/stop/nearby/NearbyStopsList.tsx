@@ -7,15 +7,22 @@ import Link from "next/link";
 
 const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
   const [latlng, setLatlng] = useState<LatLng>();
+  const [locationPermisisonDenied, setLocationPermissionDenied] =
+    useState(false);
 
   const getLocation = () => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLatlng({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatlng({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        () => {
+          setLocationPermissionDenied(true);
+        }
+      );
     }
   };
 
@@ -23,14 +30,18 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
     getLocation();
   }, []);
 
-  if (!latlng) {
+  if (locationPermisisonDenied) {
     return <Alert label="Location permission is required for this feature." />;
+  }
+
+  if (!latlng) {
+    return <Alert label="Finding nearby stops." icon="⚙️" />;
   }
 
   const nearbyStops = getNearbyStops(stops, latlng);
 
   if (!nearbyStops?.length) {
-    return <Alert label="No stops within half of a mile" />;
+    return <Alert label="No stops within a half-mile." />;
   }
 
   return (
