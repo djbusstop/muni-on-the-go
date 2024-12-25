@@ -45,10 +45,16 @@ export default async function Page({
 
   const stops = getStops(vehicleJourney);
 
+  const isMetro =
+    vehicleJourney.LineRef.length === 1 &&
+    isNaN(parseInt(vehicleJourney.LineRef));
+
   return (
     <main>
       <header>
-        <Breadcrumbs links={[<span key={vehicleId}>🚌</span>]} />
+        <Breadcrumbs
+          links={[<span key={vehicleId}>{isMetro ? "🚃" : "🚌"}</span>]}
+        />
 
         <h1 className="text-xl font-bold mt-3">
           <RouteDisplay route={vehicleJourney.LineRef} />{" "}
