@@ -88,7 +88,7 @@ export default async function Page({
           ]}
         />
 
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex items-center justify-between mt-3 gap-2">
           <h1 className="text-xl font-bold">
             <Link
               className="hover:underline"

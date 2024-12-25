@@ -67,7 +67,7 @@ export default async function Page({
             </span>,
           ]}
         />
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex items-center justify-between mt-3 gap-2">
           <div>
             <h1 className="text-xl font-bold leading-tight">
               <Link
