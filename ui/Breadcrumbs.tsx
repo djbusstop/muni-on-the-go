@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 
 const Breadcrumbs = ({ links }: { links?: ReactElement[] }) => {
   return (
-    <p key="breadcrumbs" className="text-2xl text-secondary">
+    <p key="breadcrumbs" className="text-lg text-secondary">
       <Link className="hover:underline active:opacity-70" href="/">
         🌁
       </Link>
