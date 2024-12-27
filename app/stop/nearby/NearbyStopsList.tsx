@@ -3,7 +3,9 @@
 import Alert from "@/ui/Alert";
 import { useEffect, useState } from "react";
 import getNearbyStops, { LatLng } from "./getNearbyStops";
-import Link from "next/link";
+import ListItemLink from "@/ui/ListItemLink";
+import clsx from "clsx";
+import { normalizeStopName } from "../getStopsByName";
 
 const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
   const [latlng, setLatlng] = useState<LatLng>();
@@ -45,26 +47,29 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
   }
 
   return (
-    <ul>
-      {nearbyStops.map((stop, index) => {
+    <ul className="flex flex-col gap-3">
+      {nearbyStops.map(({ stop, distance }, index) => {
         return (
-          <li
-            key={stop.normalizedName + index}
-            className="mb-4 last:mb-0 text-md"
+          <ListItemLink
+            key={index.toString()}
+            href={stop.id ? `/stop/${stop.id}` : undefined}
           >
-            <Link
-              className="flex gap-2 items-center"
-              href={`/stop/group/${stop.normalizedName}`}
-            >
-              <div className="text-lg">🚏</div>
-              <div className="leading-none hover:underline">
-                {stop.normalizedName} <br />
-                <span className="text-secondary text-xs">
-                  {Math.round(stop.distance * 100) / 100} miles
+            {/* Row */}
+            <div className={clsx(["flex", "items-center", "gap-2"])}>
+              {/* col */}
+              <div className="text-2xl">🚏</div>
+              {/* col */}
+              <div className="flex flex-col flex-grow">
+                <h3 className="text-md font-semibold">
+                  {normalizeStopName(stop.Name)}
+                </h3>
+
+                <span className="text-xs mt-0.5">
+                  {Math.round(distance * 100) / 100} miles away
                 </span>
               </div>
-            </Link>
-          </li>
+            </div>
+          </ListItemLink>
         );
       })}
     </ul>

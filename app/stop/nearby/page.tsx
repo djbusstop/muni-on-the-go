@@ -22,6 +22,7 @@ export default async function Page() {
             <span className="-ml-1" key={"a"}>
               🚏
             </span>,
+            <span key={"b"}>📌</span>,
           ]}
         />{" "}
         <div className="flex items-center justify-between mt-3">
