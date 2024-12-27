@@ -19,7 +19,7 @@ export default async function Page() {
       <header>
         <Breadcrumbs
           links={[
-            <span className="-ml-1" key={"a"}>
+            <span className="-mx-1" key={"a"}>
               🚏
             </span>,
             <span key={"b"}>📌</span>,
