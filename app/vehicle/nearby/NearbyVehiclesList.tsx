@@ -2,10 +2,16 @@
 
 import Alert from "@/ui/Alert";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import getNearbyVehicles, { LatLng } from "./getNearbyVehicles";
 import RouteDisplay from "@/ui/RouteDisplay";
 import { getStops } from "../fetchVehicleMonitoring";
+import ListItemLink from "@/ui/ListItemLink";
+import clsx from "clsx";
+import { localDate } from "@/lib/date";
+import relativeTime from "dayjs/plugin/relativeTime";
+import dayjs from "dayjs";
+
+dayjs.extend(relativeTime);
 
 const NearbyVehiclesList = ({
   vehicles,
@@ -40,26 +46,41 @@ const NearbyVehiclesList = ({
   }
 
   return (
-    <ul>
-      {nearbyVehicles.map(({ vehicle }) => {
-        const nextStop = getStops(vehicle).at(0);
-        if (!nextStop) return null;
+    <ul className={clsx(["flex", "flex-col", "gap-3"])}>
+      {nearbyVehicles.map(({ vehicle }, index) => {
+        const stops = getStops(vehicle);
+        if (!stops.at(0)) return null;
+
+        const nextStop = stops[0];
+
+        const expectedArrivalTime = localDate(
+          nextStop.ExpectedArrivalTime ||
+            nextStop.ExpectedDepartureTime ||
+            nextStop.AimedArrivalTime
+        );
 
         return (
-          <li key={vehicle.VehicleRef} className="mb-3 last:mb-0 text-md">
-            <Link href={`/vehicle/${vehicle.VehicleRef}`}>
-              <div className="leading-tight">
-                <RouteDisplay route={vehicle.LineRef} />{" "}
-                <span className="hover:underline">
+          <ListItemLink
+            key={index}
+            href={vehicle.VehicleRef && `/vehicle/${vehicle.VehicleRef}`}
+          >
+            {/* Row */}
+            <div className={clsx(["flex", "items-center", "gap-2"])}>
+              {/* Left col */}
+              <div className="flex flex-col flex-grow leading-relaxed">
+                <h3 className="font-semibold text-md">
+                  <RouteDisplay route={vehicle.LineRef} />{" "}
                   {vehicle.PublishedLineName}
-                </span>
-                <br />
-                <span className="text-secondary text-xs">
-                  Next stop: {nextStop?.StopPointName}
+                </h3>
+                <span className="text-xs">
+                  Next stop {nextStop.StopPointName}{" "}
+                  {expectedArrivalTime.fromNow()}
                 </span>
               </div>
-            </Link>
-          </li>
+              {/* Right col */}
+              <div></div>
+            </div>
+          </ListItemLink>
         );
       })}
     </ul>
