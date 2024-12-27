@@ -10,15 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page() {
   return (
-    <main className={clsx(["w-full", "flex", "flex-col"])}>
+    <main className={clsx(["w-full", "flex", "flex-col", "items-center"])}>
       <header className="max-w-lg">
-        <Breadcrumbs
-          links={[
-            <span className="-ml-1" key={"b"}>
-              ❓
-            </span>,
-          ]}
-        />
         <div className="flex items-center justify-between mt-3">
           <h1 className="text-xl font-bold">About</h1>
         </div>
