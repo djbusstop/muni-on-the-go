@@ -60,9 +60,18 @@ const NearbyVehiclesList = ({
     <ul className={clsx(["flex", "flex-col", "gap-3"])}>
       {nearbyVehicles.map(({ vehicle }, index) => {
         const stops = getStops(vehicle);
-        if (!stops.at(0)) return null;
 
-        const nextStop = stops[0];
+        // Next tracked stop
+        const nextStop = stops.find((stop) => {
+          const expectedArrivalTime = localDate(
+            stop.ExpectedArrivalTime ||
+              stop.ExpectedDepartureTime ||
+              stop.AimedArrivalTime
+          );
+          return expectedArrivalTime > dayjs();
+        });
+
+        if (!nextStop) return null;
 
         const expectedArrivalTime = localDate(
           nextStop.ExpectedArrivalTime ||

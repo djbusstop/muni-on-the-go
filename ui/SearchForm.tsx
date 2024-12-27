@@ -44,6 +44,16 @@ const VehicleIdForm = () => {
           Search
         </button>
       </div>
+      <button
+        aria-label="Find nearby vehicles"
+        title="Find nearby vehicles"
+        className="bg-gray-100 hover:bg-gray-200 text-gray-400 p-2 border border-gray-400 rounded text-lg flex-grow"
+        onClick={() => {
+          router.push("/vehicle/nearby");
+        }}
+      >
+        🚌
+      </button>
       <div className={clsx(["flex", "gap-2"])}>
         <button
           aria-label="Find nearby stops"
@@ -54,16 +64,6 @@ const VehicleIdForm = () => {
           }}
         >
           🚏
-        </button>
-        <button
-          aria-label="Find nearby vehicles"
-          title="Find nearby vehicles"
-          className="bg-gray-100 hover:bg-gray-200 text-gray-400 p-2 border border-gray-400 rounded text-lg flex-grow"
-          onClick={() => {
-            router.push("/vehicle/nearby");
-          }}
-        >
-          🚌
         </button>
       </div>
     </form>
