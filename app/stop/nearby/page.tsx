@@ -30,7 +30,7 @@ export default async function Page() {
         </div>
       </header>
 
-      <section className="my-4">
+      <section className="my-3">
         <NearbyStopsList
           stops={stopsResponse.Contents.dataObjects.ScheduledStopPoint}
         />
