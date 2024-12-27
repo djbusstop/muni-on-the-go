@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Muni On the Go",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="p-3">{children}</body>
+      <body className="p-3">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
