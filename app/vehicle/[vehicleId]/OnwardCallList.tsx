@@ -4,6 +4,7 @@ import { normalizeStopName } from "@/app/stop/getStopsByName";
 import { localDate } from "@/lib/date";
 import HourMin from "@/ui/time/HourMin";
 import Punctuality from "@/ui/time/Punctuality";
+import WaitTime from "@/ui/time/WaitTime";
 
 const OnwardCallList = ({
   onwardCalls,
@@ -43,6 +44,7 @@ const OnwardCallList = ({
                   {onwardCall.StopPointName}
                 </h3>
                 <span className="text-xs">
+                  <HourMin date={expectedArrivalTime} /> •{" "}
                   <Punctuality
                     scheduled={scheduledArrivalTime.toDate()}
                     expected={expectedArrivalTime.toDate()}
@@ -51,7 +53,10 @@ const OnwardCallList = ({
               </div>
               {/* Right col */}
               <div className="text-lg shrink-0">
-                <HourMin date={expectedArrivalTime} />
+                <WaitTime
+                  expectedTime={expectedArrivalTime.toDate()}
+                  tracking
+                />
               </div>
             </div>
           </ListItemLink>
