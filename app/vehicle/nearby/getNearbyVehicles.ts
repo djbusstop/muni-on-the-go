@@ -17,7 +17,7 @@ const getNearbyVehicles = (
 ) => {
   const userLocationPoint = point([latlng.lng, latlng.lat]);
 
-  // Get all stops < .5 miles away
+  // Get all vehicles < .5 miles away
   const nearbyVehicles = vehicles.reduce(
     (acc: VehicleWithDistance[], vehicle) => {
       // VehicleRef is required

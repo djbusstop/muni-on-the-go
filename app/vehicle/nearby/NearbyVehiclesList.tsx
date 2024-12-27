@@ -19,15 +19,22 @@ const NearbyVehiclesList = ({
   vehicles: MonitoredVehicleJourney[];
 }) => {
   const [latlng, setLatlng] = useState<LatLng>();
+  const [locationPermisisonDenied, setLocationPermissionDenied] =
+    useState(false);
 
   const getLocation = () => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLatlng({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatlng({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        () => {
+          setLocationPermissionDenied(true);
+        }
+      );
     }
   };
 
@@ -35,14 +42,18 @@ const NearbyVehiclesList = ({
     getLocation();
   }, []);
 
-  if (!latlng) {
+  if (locationPermisisonDenied) {
     return <Alert label="Location permission is required for this feature." />;
+  }
+
+  if (!latlng) {
+    return <Alert label="Finding nearby vehicles." icon="⚙️" />;
   }
 
   const nearbyVehicles = getNearbyVehicles(vehicles, latlng);
 
   if (!nearbyVehicles?.length) {
-    return <Alert label="No vehicles found." />;
+    return <Alert label="No vehicles found within a half-mile." />;
   }
 
   return (
