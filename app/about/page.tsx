@@ -39,8 +39,8 @@ export default async function Page() {
         </p>
 
         <p>
-          If you love SF Muni, check out{" "}
-          <a href="muniroutle.com" className="underline">
+          If you love the SF Municipal Transportation Agency, check out{" "}
+          <a href="https://www.muniroutle.com" className="underline">
             Muni Routle
           </a>
           , a daily quiz game to test your knowledge of Muni routes.
