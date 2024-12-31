@@ -16,6 +16,9 @@ const RouteDisplay = ({ route }: { route: string }) => {
   const lineColor = isBus
     ? LINE_COLORS.BUS
     : LINE_COLORS[route as keyof typeof LINE_COLORS];
+
+  if (!route) return null;
+
   return (
     <span
       style={{
