@@ -29,7 +29,7 @@ const FavoriteStopsList = () => {
                     ? `/stop/${favoriteStop.id}`
                     : `/stop/group/${encodeURIComponent(favoriteStop.name)}`
                 }
-                className="hover:underline text-lg"
+                className="active:underline text-lg"
               >
                 {favoriteStop.name}
                 {isIndividualStop && (
