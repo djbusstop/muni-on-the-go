@@ -46,7 +46,7 @@ export default async function Page({
   const stops = getStops(vehicleJourney);
 
   const isMetro =
-    vehicleJourney.LineRef.length === 1 &&
+    vehicleJourney.LineRef?.length === 1 &&
     isNaN(parseInt(vehicleJourney.LineRef));
 
   return (
@@ -74,7 +74,7 @@ export default async function Page({
       </header>
 
       <section className="my-3">
-        {stops.length ? (
+        {stops?.length ? (
           <OnwardCallList
             onwardCalls={stops}
             vehicleId={vehicleId}
