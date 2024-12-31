@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import getNearbyStops, { LatLng } from "./getNearbyStops";
 import ListItemLink from "@/ui/ListItemLink";
 import clsx from "clsx";
-import { normalizeStopName } from "../getStopsByName";
 
 const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
   const [latlng, setLatlng] = useState<LatLng>();
@@ -48,11 +47,11 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
 
   return (
     <ul className="flex flex-col gap-3">
-      {nearbyStops.map(({ stop, distance }, index) => {
+      {nearbyStops.map(({ distance, normalizedName }, index) => {
         return (
           <ListItemLink
             key={index.toString()}
-            href={stop.id ? `/stop/${stop.id}` : undefined}
+            href={`/stop/group/${encodeURIComponent(normalizedName)}`}
           >
             {/* Row */}
             <div className={clsx(["flex", "items-center", "gap-2"])}>
@@ -60,9 +59,7 @@ const NearbyStopsList = ({ stops }: { stops: ScheduledStopPoint[] }) => {
               <div className="text-2xl">🚏</div>
               {/* col */}
               <div className="flex flex-col flex-grow">
-                <h3 className="text-md font-semibold">
-                  {normalizeStopName(stop.Name)}
-                </h3>
+                <h3 className="text-md font-semibold">{normalizedName}</h3>
 
                 <span className="text-xs mt-0.5">
                   {Math.round(distance * 100) / 100} miles away
