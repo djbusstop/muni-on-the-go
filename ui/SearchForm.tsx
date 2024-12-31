@@ -17,7 +17,7 @@ const VehicleIdForm = () => {
     >
       <div className="flex gap-2">
         <input
-          className="text-xl appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="text-lg appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           type="number"
           inputMode="numeric"
           pattern="[0-9]*"
